@@ -28,22 +28,14 @@ a{color:inherit;text-decoration:none}
 header {
   position: sticky;
   top: 0;
-  height: 100px; /* фиксированная высота хедера */
+  height: 100px; /* фиксированная высота */
   z-index: 20;
   background: rgba(15, 15, 15, 0.9);
   backdrop-filter: blur(12px);
   display: flex;
-  align-items: center; /* центрируем контент по вертикали */
-}
-
-.nav {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px; /* убираем вертикальные паддинги */
-  height: 100%; /* nav занимает всю высоту хедера */
+  align-items: center; /* центрируем по вертикали */
+  justify-content: space-between; /* логотип слева, навигация справа */
+  padding: 0 10px; /* отступы от краёв */
 }
 
 .nav img {
@@ -51,13 +43,17 @@ header {
   width: auto;  /* сохраняем пропорции */
 }
 
-.nav a {
-  margin-left: 18px;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-links a {
   font-size: 14px;
   text-decoration: none;
   color: var(--text);
 }
-
 /* HERO */
 .hero{
   position:relative;
@@ -165,16 +161,16 @@ footer{
   .player{height:48px}
   .player img{width:32px;height:32px}
    header {
-    height: 70px; /* чуть меньше, чтобы не занимал экран */
+    height: 70px;
   }
 
   .nav img {
-    height: 50px; /* логотип уменьшаем под мобильные */
+    height: 50px;
   }
 
-  .nav a {
+  .nav-links a {
     font-size: 12px;
-    margin-left: 12px;
+    gap: 12px;
   }
 
   .nav {
@@ -185,16 +181,16 @@ footer{
 </head>
 
 <body>
-
 <header>
   <div class="nav">
     <img src="logo.png" alt="PODТЕКСТ">
-    <nav>
+    <div class="nav-links">
       <a href="#about">О группе</a>
       <a href="#tracks">Треки</a>
-    </nav>
+    </div>
   </div>
 </header>
+
 
 <div class="hero">
   <h1></h1>
