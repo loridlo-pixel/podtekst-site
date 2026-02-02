@@ -192,6 +192,49 @@ footer{
 .about-toggle:hover{
   opacity:1;
 }
+.albums{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:20px;
+  margin-bottom:32px;
+}
+
+.album-card{
+  cursor:pointer;
+  text-align:center;
+  opacity:.7;
+  transition:.2s;
+}
+
+.album-card.active,
+.album-card:hover{
+  opacity:1;
+}
+
+.album-card img,
+.album-cover.all{
+  width:100%;
+  aspect-ratio:1/1;
+  max-width:300px;
+  margin:auto;
+  border-radius:12px;
+  object-fit:cover;
+  background:#1a1a1a;
+}
+
+.album-cover.all{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+}
+
+.album-title{
+  margin-top:8px;
+  font-size:13px;
+  color:#ddd;
+}
+  
 
 </style>
 </head>
@@ -234,12 +277,27 @@ footer{
 <section id="tracks">
   <h2>Треки</h2>
 
-  <div class="albums">
-    <div class="album-btn active" data-album="all">Все</div>
-    <div class="album-btn" data-album="album1">Альбом 1</div>
-    <div class="album-btn" data-album="album2">Альбом 2</div>
-    <div class="album-btn" data-album="album3">Альбом 3</div>
+ <div class="albums">
+  <div class="album-card active" data-album="all">
+    <div class="album-cover all">Все</div>
   </div>
+
+  <div class="album-card" data-album="album1">
+    <img src="covers/album1.jpg" alt="Альбом 1">
+    <div class="album-title">Альбом 1</div>
+  </div>
+
+  <div class="album-card" data-album="album2">
+    <img src="covers/album2.jpg" alt="Альбом 2">
+    <div class="album-title">Альбом 2</div>
+  </div>
+
+  <div class="album-card" data-album="album3">
+    <img src="covers/album3.jpg" alt="Альбом 3">
+    <div class="album-title">Альбом 3</div>
+  </div>
+</div>
+
 
   <div class="tracks" id="tracksList"></div>
 </section>
