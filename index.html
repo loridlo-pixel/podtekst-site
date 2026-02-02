@@ -310,17 +310,7 @@ function render(album){
     playBtn.textContent='▶'
   }
 }
-
-
-document.querySelectorAll('.album-btn').forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll('.album-btn')
-      .forEach(b=>b.classList.remove('active'))
-    btn.classList.add('active')
-    render(btn.dataset.album)
-  }
-})
-    const about=document.querySelector('.about')
+const about=document.querySelector('.about')
 const toggle=document.getElementById('aboutToggle')
 
 toggle.onclick=()=>{
@@ -330,6 +320,16 @@ toggle.onclick=()=>{
       ? 'Свернуть'
       : 'Подробнее'
 }
+
+document.querySelectorAll('.album-btn').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('.album-btn')
+      .forEach(b=>b.classList.remove('active'))
+    btn.classList.add('active')
+    render(btn.dataset.album)
+  }
+})
+
 
 </script>
 
