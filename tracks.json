@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Авангард идёт вперёд",
+    "file": "music/avangard-idet-vpered.mp3",
+    "cover": "covers/album-main.jpg"
+  },
+  {
+    "title": "Белая акация",
+    "file": "music/belaya-akaciya.mp3",
+    "cover": "covers/album-main.jpg"
+  },
+  {
+    "title": "Бокал игристого вина",
+    "file": "music/bokal-igristogo-vina.mp3",
+    "cover": "covers/album-main.jpg"
+  },
+  {
+    "title": "Боль разлуки",
+    "file": "music/bol-razluki.mp3",
+    "cover": "covers/album-main.jpg"
+  },
+  {
+    "title": "Всё словно в сказке",
+    "file": "music/vse-slovno-v-skazke.mp3",
+    "cover": "covers/album-main.jpg"
+  },
+  {
+    "title": "Две сестры",
+    "file": "music/dve-sestry.mp3",
+    "cover": "covers/album-main.jpg"
+  },
+  {
+    "title": "День рождения",
+    "file": "music/den-rozhdeniya.mp3",
+    "cover": "covers/album-main.jpg"
+  },
+  {
+    "title": "Долина Лурье",
+    "file": "music/dolina-lure.mp3",
+    "cover": "covers/album-main.jpg"
+  },
+  {
+    "title": "Жизнь дорога",
+    "file": "music/zhizn-doroga.mp3",
+    "cover": "covers/album-main.jpg"
+  },
+  {
+    "title": "Новый год",
+    "file": "music/novyy-god.mp3",
+    "cover": "covers/album-main.jpg"
+  }
+]
