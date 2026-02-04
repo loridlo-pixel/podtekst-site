@@ -40,8 +40,11 @@ header{
   justify-content:space-between;
   padding:10px 16px
 }
-.nav img{height:100px}
-
+.nav img{
+  height: 40px;          /* НУЖНЫЙ размер */
+  width: auto;
+  object-fit: contain
+}
 /* HERO */
 .hero{
   height:90vh;
@@ -269,9 +272,7 @@ footer{
       чем кажется на первый взгляд.
     </div>
 
-    <button class="about-toggle" id="aboutToggle">
-      Подробнее
-    </button>
+   
   </div>
 </section>
 
