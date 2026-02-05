@@ -188,21 +188,70 @@ footer{
   text-align:center;
   color:var(--muted)
 }
+  /* ================= BURGER ================= */
+.burger{
+  display:none;
+  flex-direction:column;
+  justify-content:space-between;
+  width:24px;
+  height:18px;
+  cursor:pointer;
+}
+
+.burger span{
+  display:block;
+  height:3px;
+  width:100%;
+  background:#eaeaea;
+  border-radius:2px;
+}
+
+/* Мобильные стили */
+@media(max-width:768px){
+  .nav-menu{
+    position:fixed;
+    top:80px;          /* ниже хэдера */
+    right:-100%;        /* скрыто справа */
+    height:100vh;
+    width:200px;
+    background:rgba(15,15,15,0.95);
+    flex-direction:column;
+    padding:20px;
+    gap:20px;
+    transition:right .3s ease;
+  }
+
+  .nav-menu.active{
+    right:0;
+  }
+
+  .burger{
+    display:flex;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="nav">
-    <div></div>
-    <img src="logo.png" alt="PODТЕКСТ">
-    <nav class="nav-menu">
-      <a href="#about">О ГРУППЕ</a>
-      <a href="#tracks">ТРЕКИ И АЛЬБОМЫ</a>
-    </nav>
+<div class="nav">
+  <div></div>
+  <img src="logo.png" alt="PODТЕКСТ">
+
+  <nav class="nav-menu">
+    <a href="#about">О группе</a>
+    <a href="#tracks">Треки и альбомы</a>
+  </nav>
+
+  <!-- Бургер-кнопка для мобилки -->
+  <div class="burger">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-</header>
+</div>
+
 
 <div class="hero"></div>
 
@@ -313,6 +362,25 @@ document.addEventListener('DOMContentLoaded',()=>{
         list.appendChild(el)
       })
   }
+
+
+  const burger=document.querySelector('.burger');
+  const navMenu=document.querySelector('.nav-menu');
+
+  if(burger && navMenu){
+    burger.onclick=()=>{
+      navMenu.classList.toggle('active');
+    }
+  }
+
+  // Закрытие меню при клике на ссылку
+  document.querySelectorAll('.nav-menu a').forEach(link=>{
+    link.onclick=()=>{
+      navMenu.classList.remove('active');
+    }
+  });
+
+});
 
   /* FIX: фильтр альбомов */
   document.querySelectorAll('.album-card').forEach(card=>{
