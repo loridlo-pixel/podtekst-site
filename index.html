@@ -36,21 +36,19 @@ header{
 
 /* FIX: центр лого + меню справа */
 .nav{
-  max-width:1200px;
-  margin:auto;
+  height:100%;
   display:grid;
   grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  padding:10px 16px
+  align-items:center;     /* вертикальный центр */
 }
 
 .nav img{
-  height:80px;
+  height:100%;
   width:auto;
-  object-fit:contain;
-  justify-self:center;
-  transform:scale(2.2); /* поднимаем внутрь */
+  transform:scale(2.4);
+  transform-origin:center;
 }
+
 
 /* FIX: меню справа */
 .nav-menu{
