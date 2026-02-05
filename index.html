@@ -30,7 +30,8 @@ header{
   height:80px;
   z-index:20;
   background:rgba(15,15,15,.9);
-  backdrop-filter:blur(12px)
+  backdrop-filter:blur(12px);
+  overflow:hidden; /* КЛЮЧЕВО */
 }
 
 /* FIX: центр лого + меню справа */
@@ -47,7 +48,8 @@ header{
   height:200px;
   width:auto;
   object-fit:contain;
-  justify-self:center
+  justify-self:center;
+  transform:translateY(-60px); /* поднимаем внутрь */
 }
 
 /* FIX: меню справа */
