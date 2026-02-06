@@ -88,12 +88,23 @@ header{
 }
 
 /* HERO */
+/* HERO */
 .hero{
   height:100vh;
-  background:url("hero1.jpg") center / contain no-repeat;
-  background-color:#000;
-  position:relative;
+  background:url("hero1.jpg") center center / cover no-repeat;
+  width:100%;
 }
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(0,0,0,.6),
+    rgba(0,0,0,0)
+  );
+}
+
 
 /* Контент слева */
 .hero-content{
