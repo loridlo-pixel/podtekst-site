@@ -88,10 +88,7 @@ header{
 }
 
 /* ================= HERO ================= */
-.hero{
-  height:100vh;
-  background:#111;
-}
+.hero{ height:100vh; background:url("hero.jpg") center/cover no-repeat; display:flex; align-items:flex-end; padding:0px; margin-top:0px }
 
 /* ================= SECTIONS ================= */
 section{
@@ -261,25 +258,7 @@ footer{
   </div>
 </section>
 
-<section id="tracks">
-  <h2>Треки и альбомы</h2>
-
-  <div class="albums">
-    <div class="album-card active" data-album="all">
-      <img src="cover/all.jpg"><div>Все</div>
-    </div>
-    <div class="album-card" data-album="album1">
-      <img src="cover/a1.jpg"><div>Альбом</div>
-    </div>
-  </div>
-
-  <div class="controls">
-    <button id="next">▶ Next</button>
-    <button id="shuffle">🔀 Shuffle</button>
-  </div>
-
-  <div class="tracks" id="tracksList"></div>
-</section>
+<section id="tracks"> <h2>Треки и альбомы</h2> <div class="albums"> <div class="album-card active" data-album="all"> <img src="cover/album-all.jpg"> <div class="album-title">Прослушать все треки</div> </div> <div class="album-card" data-album="album1"> <img src="cover/album-main.jpg"> <div class="album-title">Две сестры</div> </div> <div class="album-card" data-album="album2"> <img src="cover/album-main2.jpg"> <div class="album-title">Город северных вьюг</div> </div> </div> <div class="tracks" id="tracksList"></div> </section>
 
 <footer>© PODТЕКСТ — 2026</footer>
 
