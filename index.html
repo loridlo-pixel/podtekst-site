@@ -144,6 +144,85 @@ section{max-width:1200px;margin:64px auto;padding:0 16px}
 }
 
 footer{text-align:center;padding:40px;color:var(--muted)}
+  .new-release{
+  margin:40px 0;
+}
+
+.new-player{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  background:#1c1c1c;
+  border-radius:16px;
+  padding:20px;
+  max-width:900px;
+}
+
+.new-cover{
+  width:120px;
+  height:120px;
+  border-radius:12px;
+  object-fit:cover;
+}
+
+.new-info{
+  flex:1;
+}
+
+.new-title{
+  font-size:18px;
+  font-weight:600;
+  color:#fff;
+}
+
+.new-artist{
+  font-size:14px;
+  color:#aaa;
+}
+
+.new-controls{
+  display:flex;
+  gap:10px;
+}
+
+.new-controls button,
+.new-controls a{
+  background:#2a2a2a;
+  border:none;
+  color:#fff;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:16px;
+}
+
+.new-controls button:hover,
+.new-controls a:hover{
+  background:#444;
+}
+
+.new-progress{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  margin-top:10px;
+}
+
+.new-progress span{
+  font-size:12px;
+  color:#aaa;
+  min-width:35px;
+}
+
+.new-progress input{
+  flex:1;
+}
+
 </style>
 </head>
 
@@ -163,17 +242,41 @@ footer{text-align:center;padding:40px;color:var(--muted)}
 
 <div class="hero"></div>
 
-<section id="new">
-  <h2>Новинка</h2>
-  <div id="newTrack"></div>
+<section class="new-release">
+  <h2 class="section-title">Новинка</h2>
+
+  <div class="new-player" id="newPlayer">
+    <img class="new-cover" id="newCover" src="covers/novinka.jpg" alt="">
+
+    <div class="new-info">
+      <div class="new-title" id="newTitle">PODТЕКСТ — Летняя</div>
+      <div class="new-artist">PODТЕКСТ</div>
+    </div>
+
+    <div class="new-controls">
+      <button data-action="prev">⏮</button>
+      <button data-action="play">▶</button>
+      <button data-action="stop">⏹</button>
+      <button data-action="next">⏭</button>
+      <button data-action="shuffle">🔀</button>
+      <a id="downloadBtn" download>⬇️</a>
+    </div>
+
+    <div class="new-progress">
+      <span id="currentTime">0:00</span>
+      <input type="range" id="progress" value="0">
+      <span id="duration">0:00</span>
+    </div>
+  </div>
+
+  <audio id="newAudio"></audio>
 </section>
+
 
 <section id="about">
   <h2>О группе</h2>
   <div class="about-text">
-    <p>PODТЕКСТ — музыкальный проект с широким жанровым диапазоном и акцентом на смысл.</p>
-    <p>Проект работает на стыке лирической поп-музыки, рока, шансона, рэпа и других направлений.</p>
-    <p>PODТЕКСТ — это музыка, в которой между строк всегда есть больше, чем кажется.</p>
+  <p>PODТЕКСТ — музыкальный проект с широким жанровым диапазоном и акцентом на смысл.</p> <p>Проект работает на стыке лирической поп-музыки, рока, шансона, рэпа и других направлений, объединяя разные стили единым авторским подходом. В основе каждого трека — текст с глубиной, вторым планом и подтекстом, который раскрывается при внимательном прослушивании.</p> <p>Автор слов и музыки — разносторонний артист, свободно работающий с формой, настроением и жанром. Лирика варьируется от личных и эмоциональных историй до социальных и философских тем. Музыка всегда подчинена смыслу, а не шаблону.</p> <p>PODТЕКСТ ориентирован на слушателя, которому важны не только мелодия и подача, но и содержание. Проект органично чувствует себя как в камерных композициях, так и в энергичных треках, сохраняя узнаваемый стиль.</p> <p>PODТЕКСТ — это музыка, в которой между строк всегда есть больше, чем кажется на первый взгляд.</p>
   </div>
 </section>
 
@@ -192,6 +295,10 @@ footer{text-align:center;padding:40px;color:var(--muted)}
     <div class="album-card" data-album="album2">
       <img src="cover/album-main2.jpg">
       <div class="album-title">Город северных вьюг</div>
+    </div>
+    <div class="album-card" data-album="album3">
+      <img src="cover/album-main3.jpg">
+      <div class="album-title">Авангард идёт вперёд</div>
     </div>
   </div>
 
@@ -304,6 +411,110 @@ document.querySelectorAll('.album-card').forEach(card=>{
 document.querySelector('.burger').onclick=()=>{
   document.querySelector('.nav-menu').classList.toggle('active')
 }
+  
+const tracks = [
+  {
+    title: "PODТЕКСТ — Летняя",
+    cover: "covers/novinka.jpg",
+    src: "audio/letnyaya.mp3"
+  },
+  {
+    title: "PODТЕКСТ — Ночь",
+    cover: "covers/night.jpg",
+    src: "audio/night.mp3"
+  }
+];
+
+let index = 0;
+let isShuffle = false;
+
+const audio = document.getElementById("newAudio");
+const title = document.getElementById("newTitle");
+const cover = document.getElementById("newCover");
+const progress = document.getElementById("progress");
+const currentTime = document.getElementById("currentTime");
+const duration = document.getElementById("duration");
+const downloadBtn = document.getElementById("downloadBtn");
+
+function loadTrack(i){
+  const t = tracks[i];
+  audio.src = t.src;
+  title.textContent = t.title;
+  cover.src = t.cover;
+  downloadBtn.href = t.src;
+}
+
+loadTrack(index);
+
+// управление
+document.querySelectorAll(".new-controls button").forEach(btn=>{
+  btn.onclick = ()=>{
+    const action = btn.dataset.action;
+
+    if(action === "play"){
+      if(audio.paused){
+        audio.play();
+        btn.textContent = "⏸";
+      }else{
+        audio.pause();
+        btn.textContent = "▶";
+      }
+    }
+
+    if(action === "stop"){
+      audio.pause();
+      audio.currentTime = 0;
+      document.querySelector('[data-action="play"]').textContent = "▶";
+    }
+
+    if(action === "next"){
+      index = isShuffle
+        ? Math.floor(Math.random()*tracks.length)
+        : (index+1)%tracks.length;
+      loadTrack(index);
+      audio.play();
+    }
+
+    if(action === "prev"){
+      index = (index-1+tracks.length)%tracks.length;
+      loadTrack(index);
+      audio.play();
+    }
+
+    if(action === "shuffle"){
+      isShuffle = !isShuffle;
+      btn.style.background = isShuffle ? "#555" : "#2a2a2a";
+    }
+  }
+});
+
+// прогресс
+audio.addEventListener("timeupdate",()=>{
+  progress.value = (audio.currentTime / audio.duration) * 100 || 0;
+  currentTime.textContent = format(audio.currentTime);
+  duration.textContent = format(audio.duration);
+});
+
+progress.oninput = ()=>{
+  audio.currentTime = (progress.value/100)*audio.duration;
+};
+
+audio.onended = ()=>{
+  index = isShuffle
+    ? Math.floor(Math.random()*tracks.length)
+    : (index+1)%tracks.length;
+  loadTrack(index);
+  audio.play();
+};
+
+function format(sec){
+  if(!sec) return "0:00";
+  const m = Math.floor(sec/60);
+  const s = Math.floor(sec%60).toString().padStart(2,"0");
+  return `${m}:${s}`;
+}
+
+
 </script>
 
 </body>
