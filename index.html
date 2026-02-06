@@ -108,6 +108,25 @@ section{max-width:1200px;margin:64px auto;padding:0 16px}
   max-width:900px;
   width:100%;
 }
+  .icon-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+
+.icon-btn svg{
+  fill:#fff;
+  transition: transform .2s, opacity .2s;
+}
+
+.icon-btn:hover svg{
+  transform:scale(1.1);
+  opacity:.8;
+}
+
 .new-cover{
   width:120px;
   height:120px;
@@ -262,10 +281,7 @@ section{max-width:1200px;margin:64px auto;padding:0 16px}
   </div>
 </section>
 
-<section id="tracks">
-  <h2>Треки и альбомы</h2>
-  <div class="tracks" id="tracksList"></div>
-</section>
+<section id="tracks"> <h2>Треки и альбомы</h2> <div class="albums"> <div class="album-card active" data-album="all"> <img src="cover/album-all.jpg"> <div class="album-title">Все треки</div> </div> <div class="album-card" data-album="album1"> <img src="cover/album-main.jpg"> <div class="album-title">Две сестры</div> </div> <div class="album-card" data-album="album2"> <img src="cover/album-main2.jpg"> <div class="album-title">Город северных вьюг</div> </div> <div class="album-card" data-album="album3"> <img src="cover/album-main3.jpg"> <div class="album-title">Авангард идёт вперёд</div> </div> </div> <div class="tracks" id="tracksList"></div> </section>
 
 <div class="global-player">
   <div class="global-progress"><div class="global-bar" id="globalBar"></div></div>
@@ -273,11 +289,20 @@ section{max-width:1200px;margin:64px auto;padding:0 16px}
   <div class="global-info">
     <div class="global-title" id="globalTitle">—</div>
   </div>
-  <div class="global-controls">
-    <button id="prev">⏮</button>
-    <button id="play">▶</button>
-    <button id="next">⏭</button>
-  </div>
+<div class="global-controls">
+  <button id="prev" class="icon-btn">
+    <svg width="20" height="20"><use xlink:href="#icon-prev"></use></svg>
+  </button>
+
+  <button id="play" class="icon-btn">
+    <svg width="20" height="20"><use xlink:href="#icon-play"></use></svg>
+  </button>
+
+  <button id="next" class="icon-btn">
+    <svg width="20" height="20"><use xlink:href="#icon-next"></use></svg>
+  </button>
+</div>
+
 </div>
 
 <script>
@@ -320,23 +345,78 @@ function loadTrack(i){
   downloadBtn.href=t.file;
 }
 
-function playTrack(i){
-  currentIndex=i;
-  loadTrack(i);
-  audio.play();
-  play.textContent='⏸';
+// элементы
+const playBtn = document.getElementById('play');
+const nextBtn = document.getElementById('next');
+const prevBtn = document.getElementById('prev');
+
+const globalBar = document.getElementById('globalBar');
+
+let currentIndex = 0;
+const audio = new Audio();
+
+// переключение иконок через спрайт
+function setPlayIcon(){
+  playBtn.innerHTML = `<svg width="20" height="20"><use xlink:href="#icon-play"></use></svg>`;
 }
 
-play.onclick=()=>{
-  if(audio.paused){audio.play();play.textContent='⏸'}
-  else{audio.pause();play.textContent='▶'}
-};
-next.onclick=()=>playTrack((currentIndex+1)%tracks.length);
-prev.onclick=()=>playTrack((currentIndex-1+tracks.length)%tracks.length);
+function setPauseIcon(){
+  playBtn.innerHTML = `<svg width="20" height="20"><use xlink:href="#icon-pause"></use></svg>`;
+}
 
-audio.ontimeupdate=()=>{
-  globalBar.style.width=(audio.currentTime/audio.duration*100||0)+'%';
+// загрузка трека
+function loadTrack(i){
+  const t = tracks[i];
+  currentIndex = i;
+  audio.src = t.file;
+  globalCover.src = t.cover;
+  globalTitle.textContent = t.title;
+
+  // синхронизируем "новинка"
+  newCover.src = t.cover;
+  newTitle.textContent = t.title;
+  downloadBtn.href = t.file;
+}
+
+// воспроизведение трека
+function playTrack(i){
+  loadTrack(i);
+  audio.play();
+  setPauseIcon();
+}
+
+// кнопки
+playBtn.onclick = () => {
+  if(audio.paused){
+    audio.play();
+    setPauseIcon();
+  } else {
+    audio.pause();
+    setPlayIcon();
+  }
 };
+
+nextBtn.onclick = () => {
+  const nextIndex = (currentIndex + 1) % tracks.length;
+  playTrack(nextIndex);
+};
+
+prevBtn.onclick = () => {
+  const prevIndex = (currentIndex - 1 + tracks.length) % tracks.length;
+  playTrack(prevIndex);
+};
+
+// обновление прогресса
+audio.ontimeupdate = () => {
+  globalBar.style.width = (audio.currentTime / audio.duration * 100 || 0) + '%';
+};
+
+// авто-переключение на следующий трек после окончания
+audio.onended = () => {
+  const nextIndex = (currentIndex + 1) % tracks.length;
+  playTrack(nextIndex);
+};
+
 
 /* NEW RELEASE CONTROLS */
 document.querySelectorAll('.new-controls button').forEach(btn=>{
