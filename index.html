@@ -302,27 +302,93 @@ section{max-width:1200px;margin:64px auto;padding:0 16px}
     <svg width="20" height="20"><use xlink:href="#icon-next"></use></svg>
   </button>
 </div>
-
+<!-- SVG SPRITE -->
+<svg style="display:none;">
+  <symbol id="icon-play" viewBox="0 0 24 24">
+    <polygon points="8,5 19,12 8,19"></polygon>
+  </symbol>
+  <symbol id="icon-pause" viewBox="0 0 24 24">
+    <rect x="6" y="5" width="4" height="14"></rect>
+    <rect x="14" y="5" width="4" height="14"></rect>
+  </symbol>
+  <symbol id="icon-next" viewBox="0 0 24 24">
+    <polygon points="5,5 14,12 5,19"></polygon>
+    <rect x="15" y="5" width="3" height="14"></rect>
+  </symbol>
+  <symbol id="icon-prev" viewBox="0 0 24 24">
+    <polygon points="19,5 10,12 19,19"></polygon>
+    <rect x="6" y="5" width="3" height="14"></rect>
+  </symbol>
+</svg>
 </div>
 
+
+
 <script>
-let tracks=[];
-let currentIndex=0;
-const audio=new Audio();
+let tracks = [];
+let currentIndex = 0;
+const audio = new Audio();
 
-fetch('tracks.json').then(r=>r.json()).then(data=>{
-  tracks=data;
-  renderTracks();
-  loadTrack(0);
-});
+const playBtn = document.getElementById('play');
+const nextBtn = document.getElementById('next');
+const prevBtn = document.getElementById('prev');
+const globalBar = document.getElementById('globalBar');
+const globalCover = document.getElementById('globalCover');
+const globalTitle = document.getElementById('globalTitle');
+const newCover = document.getElementById('newCover');
+const newTitle = document.getElementById('newTitle');
+const downloadBtn = document.getElementById('downloadBtn');
 
+// SVG Icons
+function setPlayIcon(){ playBtn.innerHTML=`<svg width="20" height="20"><use xlink:href="#icon-play"></use></svg>`; }
+function setPauseIcon(){ playBtn.innerHTML=`<svg width="20" height="20"><use xlink:href="#icon-pause"></use></svg>`; }
+
+// Загрузка трека в глобальный плеер
+function loadTrack(i){
+  const t = tracks[i];
+  currentIndex = i;
+  audio.src = t.file;
+  globalCover.src = t.cover;
+  globalTitle.textContent = t.title;
+  newCover.src = t.cover;
+  newTitle.textContent = t.title;
+  downloadBtn.href = t.file;
+
+  // Обновляем состояние кнопки Play
+  setPlayIcon();
+}
+
+// Воспроизведение трека
+function playTrack(i){
+  if(i !== undefined) loadTrack(i);
+  audio.play();
+  setPauseIcon();
+}
+
+// Кнопки управления
+playBtn.onclick = () => {
+  if(audio.paused){ audio.play(); setPauseIcon(); }
+  else{ audio.pause(); setPlayIcon(); }
+};
+nextBtn.onclick = () => playTrack((currentIndex + 1) % tracks.length);
+prevBtn.onclick = () => playTrack((currentIndex - 1 + tracks.length) % tracks.length);
+
+// Прогресс бар
+audio.ontimeupdate = () => {
+  globalBar.style.width = (audio.currentTime / audio.duration * 100 || 0) + '%';
+};
+
+// Авто-переход на следующий трек
+audio.onended = () => nextBtn.onclick();
+
+// Рендер треков на странице
 function renderTracks(){
-  const list=document.getElementById('tracksList');
-  list.innerHTML='';
+  const list = document.getElementById('tracksList');
+  list.innerHTML = '';
   tracks.forEach((t,i)=>{
-    const el=document.createElement('div');
-    el.className='track';
-    el.innerHTML=`
+    const el = document.createElement('div');
+    el.className = 'track';
+    el.innerHTML = `
       <div class="track-header">
         <img class="track-cover" src="${t.cover}">
         <div>${t.title}</div>
@@ -330,105 +396,29 @@ function renderTracks(){
         <a class="track-download" href="${t.file}" download>⬇</a>
       </div>
     `;
-    el.querySelector('.track-play').onclick=()=>playTrack(i);
+    el.querySelector('.track-play').onclick = () => playTrack(i);
     list.appendChild(el);
   });
 }
 
-function loadTrack(i){
-  const t=tracks[i];
-  audio.src=t.file;
-  globalCover.src=t.cover;
-  globalTitle.textContent=t.title;
-  newCover.src=t.cover;
-  newTitle.textContent=t.title;
-  downloadBtn.href=t.file;
-}
-
-// элементы
-const playBtn = document.getElementById('play');
-const nextBtn = document.getElementById('next');
-const prevBtn = document.getElementById('prev');
-
-const globalBar = document.getElementById('globalBar');
-
-let currentIndex = 0;
-const audio = new Audio();
-
-// переключение иконок через спрайт
-function setPlayIcon(){
-  playBtn.innerHTML = `<svg width="20" height="20"><use xlink:href="#icon-play"></use></svg>`;
-}
-
-function setPauseIcon(){
-  playBtn.innerHTML = `<svg width="20" height="20"><use xlink:href="#icon-pause"></use></svg>`;
-}
-
-// загрузка трека
-function loadTrack(i){
-  const t = tracks[i];
-  currentIndex = i;
-  audio.src = t.file;
-  globalCover.src = t.cover;
-  globalTitle.textContent = t.title;
-
-  // синхронизируем "новинка"
-  newCover.src = t.cover;
-  newTitle.textContent = t.title;
-  downloadBtn.href = t.file;
-}
-
-// воспроизведение трека
-function playTrack(i){
-  loadTrack(i);
-  audio.play();
-  setPauseIcon();
-}
-
-// кнопки
-playBtn.onclick = () => {
-  if(audio.paused){
-    audio.play();
-    setPauseIcon();
-  } else {
-    audio.pause();
-    setPlayIcon();
-  }
-};
-
-nextBtn.onclick = () => {
-  const nextIndex = (currentIndex + 1) % tracks.length;
-  playTrack(nextIndex);
-};
-
-prevBtn.onclick = () => {
-  const prevIndex = (currentIndex - 1 + tracks.length) % tracks.length;
-  playTrack(prevIndex);
-};
-
-// обновление прогресса
-audio.ontimeupdate = () => {
-  globalBar.style.width = (audio.currentTime / audio.duration * 100 || 0) + '%';
-};
-
-// авто-переключение на следующий трек после окончания
-audio.onended = () => {
-  const nextIndex = (currentIndex + 1) % tracks.length;
-  playTrack(nextIndex);
-};
-
-
-/* NEW RELEASE CONTROLS */
+// Контроль блока "новинка"
 document.querySelectorAll('.new-controls button').forEach(btn=>{
   btn.onclick=()=>{
-    const a=btn.dataset.action;
-    if(a==='play') playTrack(currentIndex);
-    if(a==='next') next.onclick();
-    if(a==='prev') prev.onclick();
+    const action=btn.dataset.action;
+    if(action==='play') playTrack();
+    if(action==='next') nextBtn.onclick();
+    if(action==='prev') prevBtn.onclick();
   };
 });
 
-/* BURGER */
+// Загрузка данных
+fetch('tracks.json').then(r=>r.json()).then(data=>{
+  tracks = data;
+  renderTracks();
+  loadTrack(0);
+});
+
+// Бургер меню
 const burger=document.querySelector('.burger');
 const menu=document.querySelector('.nav-menu');
 burger.onclick=()=>{
@@ -436,6 +426,7 @@ burger.onclick=()=>{
   menu.classList.toggle('active');
 };
 </script>
+
 
 </body>
 </html>
