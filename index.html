@@ -13,11 +13,13 @@
   --muted:#9a9a9a;
 }
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Inter,system-ui,Arial;
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
+  padding-bottom:96px;
 }
 
 /* HEADER */
@@ -42,112 +44,60 @@ header{
 .nav-menu{justify-self:end;display:flex;gap:20px}
 .nav-menu a{color:#eaeaea;text-decoration:none;opacity:.8}
 .nav-menu a:hover{opacity:1}
-.burger{display:none;flex-direction:column;gap:4px;width:24px;cursor:pointer;z-index:100}
-.burger span{height:3px;background:#fff;border-radius:2px}
+
+/* BURGER */
+.burger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  width:26px;
+  cursor:pointer;
+  justify-self:end;
+}
+.burger span{
+  height:3px;
+  background:#fff;
+  border-radius:2px;
+  transition:.3s;
+}
+.burger.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
+.burger.active span:nth-child(2){
+  opacity:0;
+}
+.burger.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
+
 @media(max-width:768px){
+  .nav{grid-template-columns:auto 1fr auto}
   .nav-menu{
-    position:fixed;top:80px;right:-100%;width:220px;height:100vh;
-    background:#0f0f0f;flex-direction:column;padding:20px;transition:.3s
+    position:fixed;
+    top:80px;
+    right:-100%;
+    width:240px;
+    height:100vh;
+    background:#0f0f0f;
+    flex-direction:column;
+    padding:20px;
+    transition:.3s;
   }
   .nav-menu.active{right:0}
   .burger{display:flex}
 }
 
 /* HERO */
-.hero{height:100vh;background:url("hero.jpg") center/cover no-repeat}
+.hero{height:100vh;background:#111}
 
 /* SECTIONS */
 section{max-width:1200px;margin:64px auto;padding:0 16px}
 
 /* ABOUT */
 .about-text{color:#ddd;line-height:1.6;font-size:15px}
-.about-text p{margin-bottom:16px}
 
-/* NEW TRACK */
-.new-track-card{
-  display:flex;gap:20px;background:#161616;border-radius:16px;
-  padding:20px;align-items:center
-}
-.new-track-card img{
-  width:140px;height:140px;border-radius:12px;object-fit:cover
-}
-.new-track-title{font-size:20px;margin-bottom:10px}
-.new-track audio{width:100%}
-@media(max-width:768px){
-  .new-track-card{flex-direction:column;text-align:center}
-}
-
-/* ALBUMS */
-.albums{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:20px
-}
-.album-card{text-align:center;opacity:.6;cursor:pointer}
-.album-card.active{opacity:1}
-.album-card img{
-  width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover
-}
-
-/* TRACKS */
-.tracks{
-  background:var(--bg2);
-  border-radius:16px;
-  overflow:hidden;
-  margin-top:24px
-}
-.track{
-  padding:16px;
-  border-bottom:1px solid #222;
-  transition:background .2s
-}
-.track:last-child{border-bottom:none}
-.track.active{background:#1b1b1b}
-
-.track-header{
-  display:grid;
-  grid-template-columns:48px 1fr auto auto;
-  gap:12px;
-  align-items:center
-}
-.track-cover{
-  width:48px;height:48px;border-radius:6px;object-fit:cover
-}
-.track-play{
-  cursor:pointer;
-  font-size:16px;
-  opacity:.8
-}
-.track-play:hover{opacity:1}
-.track-download{
-  cursor:pointer;
-  opacity:.5;
-  text-decoration:none;
-  color:var(--text)
-}
-.track-download:hover{opacity:1}
-
-/* PROGRESS */
-.progress{
-  height:3px;
-  background:#2a2a2a;
-  border-radius:3px;
-  margin-top:10px;
-  overflow:hidden;
-  display:none
-}
-.track.active .progress{display:block}
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:#eaeaea
-}
-
-footer{text-align:center;padding:40px;color:var(--muted)}
-  .new-release{
-  margin:40px 0;
-}
-
+/* NEW RELEASE */
+.new-release{display:flex;justify-content:center}
 .new-player{
   display:flex;
   align-items:center;
@@ -156,35 +106,18 @@ footer{text-align:center;padding:40px;color:var(--muted)}
   border-radius:16px;
   padding:20px;
   max-width:900px;
+  width:100%;
 }
-
 .new-cover{
   width:120px;
   height:120px;
   border-radius:12px;
   object-fit:cover;
 }
-
-.new-info{
-  flex:1;
-}
-
-.new-title{
-  font-size:18px;
-  font-weight:600;
-  color:#fff;
-}
-
-.new-artist{
-  font-size:14px;
-  color:#aaa;
-}
-
-.new-controls{
-  display:flex;
-  gap:10px;
-}
-
+.new-info{flex:1}
+.new-title{font-size:18px;font-weight:600}
+.new-artist{font-size:14px;color:#aaa}
+.new-controls{display:flex;gap:10px}
 .new-controls button,
 .new-controls a{
   background:#2a2a2a;
@@ -197,32 +130,96 @@ footer{text-align:center;padding:40px;color:var(--muted)}
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:16px;
 }
-
 .new-controls button:hover,
-.new-controls a:hover{
-  background:#444;
+.new-controls a:hover{background:#444}
+
+/* ALBUMS */
+.albums{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:20px
+}
+.album-card{text-align:center;opacity:.6;cursor:pointer}
+.album-card.active{opacity:1}
+.album-card img{
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:12px;
+  object-fit:cover
 }
 
-.new-progress{
+/* TRACKS */
+.tracks{
+  background:var(--bg2);
+  border-radius:16px;
+  overflow:hidden;
+  margin-top:24px
+}
+.track{
+  padding:16px;
+  border-bottom:1px solid #222;
+}
+.track.active{background:#1b1b1b}
+.track-header{
+  display:grid;
+  grid-template-columns:48px 1fr auto auto;
+  gap:12px;
+  align-items:center
+}
+.track-cover{
+  width:48px;
+  height:48px;
+  border-radius:6px;
+  object-fit:cover
+}
+.track-play{cursor:pointer}
+.track-download{color:#fff;text-decoration:none;opacity:.5}
+.track-download:hover{opacity:1}
+
+/* GLOBAL PLAYER */
+.global-player{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#1a1a1a;
+  border-top:1px solid #222;
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:16px;
+  padding:12px 16px;
+  z-index:50;
+}
+.global-cover{
+  width:56px;
+  height:56px;
+  border-radius:8px;
+  object-fit:cover;
+}
+.global-info{flex:1}
+.global-title{font-size:14px}
+.global-controls{display:flex;gap:12px}
+.global-controls button{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+}
+.global-progress{
+  position:absolute;
+  top:-3px;
+  left:0;
+  height:3px;
   width:100%;
-  margin-top:10px;
+  background:#333;
 }
-
-.new-progress span{
-  font-size:12px;
-  color:#aaa;
-  min-width:35px;
+.global-bar{
+  height:100%;
+  width:0%;
+  background:#fff;
 }
-
-.new-progress input{
-  flex:1;
-}
-
 </style>
 </head>
 
@@ -243,111 +240,63 @@ footer{text-align:center;padding:40px;color:var(--muted)}
 <div class="hero"></div>
 
 <section class="new-release">
-  <h2 class="section-title">Новинка</h2>
-
-  <div class="new-player" id="newPlayer">
-    <img class="new-cover" id="newCover" src="covers/novinka.jpg" alt="">
-
+  <div class="new-player">
+    <img class="new-cover" id="newCover">
     <div class="new-info">
-      <div class="new-title" id="newTitle">PODТЕКСТ — Летняя</div>
+      <div class="new-title" id="newTitle">—</div>
       <div class="new-artist">PODТЕКСТ</div>
     </div>
-
     <div class="new-controls">
       <button data-action="prev">⏮</button>
       <button data-action="play">▶</button>
-      <button data-action="stop">⏹</button>
       <button data-action="next">⏭</button>
-      <button data-action="shuffle">🔀</button>
-      <a id="downloadBtn" download>⬇️</a>
-    </div>
-
-    <div class="new-progress">
-      <span id="currentTime">0:00</span>
-      <input type="range" id="progress" value="0">
-      <span id="duration">0:00</span>
+      <a id="downloadBtn" download>⬇</a>
     </div>
   </div>
-
-  <audio id="newAudio"></audio>
 </section>
-
 
 <section id="about">
   <h2>О группе</h2>
   <div class="about-text">
-  <p>PODТЕКСТ — музыкальный проект с широким жанровым диапазоном и акцентом на смысл.</p> <p>Проект работает на стыке лирической поп-музыки, рока, шансона, рэпа и других направлений, объединяя разные стили единым авторским подходом. В основе каждого трека — текст с глубиной, вторым планом и подтекстом, который раскрывается при внимательном прослушивании.</p> <p>Автор слов и музыки — разносторонний артист, свободно работающий с формой, настроением и жанром. Лирика варьируется от личных и эмоциональных историй до социальных и философских тем. Музыка всегда подчинена смыслу, а не шаблону.</p> <p>PODТЕКСТ ориентирован на слушателя, которому важны не только мелодия и подача, но и содержание. Проект органично чувствует себя как в камерных композициях, так и в энергичных треках, сохраняя узнаваемый стиль.</p> <p>PODТЕКСТ — это музыка, в которой между строк всегда есть больше, чем кажется на первый взгляд.</p>
+   <p>PODТЕКСТ — музыкальный проект с широким жанровым диапазоном и акцентом на смысл.</p> <p>Проект работает на стыке лирической поп-музыки, рока, шансона, рэпа и других направлений, объединяя разные стили единым авторским подходом. В основе каждого трека — текст с глубиной, вторым планом и подтекстом, который раскрывается при внимательном прослушивании.</p> <p>Автор слов и музыки — разносторонний артист, свободно работающий с формой, настроением и жанром. Лирика варьируется от личных и эмоциональных историй до социальных и философских тем. Музыка всегда подчинена смыслу, а не шаблону.</p> <p>PODТЕКСТ ориентирован на слушателя, которому важны не только мелодия и подача, но и содержание. Проект органично чувствует себя как в камерных композициях, так и в энергичных треках, сохраняя узнаваемый стиль.</p> <p>PODТЕКСТ — это музыка, в которой между строк всегда есть больше, чем кажется на первый взгляд.</p>
   </div>
 </section>
 
 <section id="tracks">
   <h2>Треки и альбомы</h2>
-
-  <div class="albums">
-    <div class="album-card active" data-album="all">
-      <img src="cover/album-all.jpg">
-      <div class="album-title">Все треки</div>
-    </div>
-    <div class="album-card" data-album="album1">
-      <img src="cover/album-main.jpg">
-      <div class="album-title">Две сестры</div>
-    </div>
-    <div class="album-card" data-album="album2">
-      <img src="cover/album-main2.jpg">
-      <div class="album-title">Город северных вьюг</div>
-    </div>
-    <div class="album-card" data-album="album3">
-      <img src="cover/album-main3.jpg">
-      <div class="album-title">Авангард идёт вперёд</div>
-    </div>
-  </div>
-
   <div class="tracks" id="tracksList"></div>
 </section>
 
-<footer>© PODТЕКСТ — 2026</footer>
+<div class="global-player">
+  <div class="global-progress"><div class="global-bar" id="globalBar"></div></div>
+  <img class="global-cover" id="globalCover">
+  <div class="global-info">
+    <div class="global-title" id="globalTitle">—</div>
+  </div>
+  <div class="global-controls">
+    <button id="prev">⏮</button>
+    <button id="play">▶</button>
+    <button id="next">⏭</button>
+  </div>
+</div>
 
 <script>
-let tracks=[]
-let currentAudio=null
-let currentIndex=0
-let currentList=[]
+let tracks=[];
+let currentIndex=0;
+const audio=new Audio();
 
 fetch('tracks.json').then(r=>r.json()).then(data=>{
-  tracks=data
-  currentList=tracks
-  renderNew()
-  renderTracks('all')
-})
+  tracks=data;
+  renderTracks();
+  loadTrack(0);
+});
 
-function renderNew(){
-  const t=tracks[0]
-  document.getElementById('newTrack').innerHTML=`
-    <div class="new-track-card">
-      <img src="${t.cover}">
-      <div>
-        <div class="new-track-title">${t.title}</div>
-        <audio controls src="${t.file}"></audio>
-      </div>
-    </div>`
-}
-
-function renderTracks(album){
-  const list=document.getElementById('tracksList')
-  list.innerHTML=''
-
-  if(currentAudio){
-    currentAudio.pause()
-    currentAudio=null
-  }
-
-  currentList = album==='all'
-    ? tracks
-    : tracks.filter(t=>t.album===album)
-
-  currentList.forEach((t,i)=>{
-    const el=document.createElement('div')
-    el.className='track'
+function renderTracks(){
+  const list=document.getElementById('tracksList');
+  list.innerHTML='';
+  tracks.forEach((t,i)=>{
+    const el=document.createElement('div');
+    el.className='track';
     el.innerHTML=`
       <div class="track-header">
         <img class="track-cover" src="${t.cover}">
@@ -355,166 +304,57 @@ function renderTracks(album){
         <div class="track-play">▶</div>
         <a class="track-download" href="${t.file}" download>⬇</a>
       </div>
-      <div class="progress"><div class="progress-bar"></div></div>
-    `
-
-    const play=el.querySelector('.track-play')
-    const bar=el.querySelector('.progress-bar')
-    const audio=new Audio(t.file)
-
-    play.onclick=()=>{
-      if(currentAudio && currentAudio!==audio){
-        currentAudio.pause()
-        document.querySelectorAll('.track').forEach(x=>x.classList.remove('active'))
-        document.querySelectorAll('.track-play').forEach(b=>b.textContent='▶')
-      }
-
-      currentAudio=audio
-      currentIndex=i
-      el.classList.add('active')
-
-      if(audio.paused){
-        audio.play()
-        play.textContent='❚❚'
-      }else{
-        audio.pause()
-        play.textContent='▶'
-      }
-    }
-
-    audio.ontimeupdate=()=>{
-      bar.style.width=(audio.currentTime/audio.duration*100)+'%'
-    }
-
-    audio.onended=()=>playNext()
-
-    list.appendChild(el)
-  })
+    `;
+    el.querySelector('.track-play').onclick=()=>playTrack(i);
+    list.appendChild(el);
+  });
 }
-
-function playNext(){
-  currentIndex=(currentIndex+1)%currentList.length
-  document.querySelectorAll('.track')[currentIndex]
-    .querySelector('.track-play').click()
-}
-
-/* ALBUM FILTER */
-document.querySelectorAll('.album-card').forEach(card=>{
-  card.onclick=()=>{
-    document.querySelectorAll('.album-card').forEach(c=>c.classList.remove('active'))
-    card.classList.add('active')
-    renderTracks(card.dataset.album)
-  }
-})
-
-/* BURGER */
-document.querySelector('.burger').onclick=()=>{
-  document.querySelector('.nav-menu').classList.toggle('active')
-}
-  
-const tracks = [
-  {
-    title: "PODТЕКСТ — Летняя",
-    cover: "covers/novinka.jpg",
-    src: "audio/letnyaya.mp3"
-  },
-  {
-    title: "PODТЕКСТ — Ночь",
-    cover: "covers/night.jpg",
-    src: "audio/night.mp3"
-  }
-];
-
-let index = 0;
-let isShuffle = false;
-
-const audio = document.getElementById("newAudio");
-const title = document.getElementById("newTitle");
-const cover = document.getElementById("newCover");
-const progress = document.getElementById("progress");
-const currentTime = document.getElementById("currentTime");
-const duration = document.getElementById("duration");
-const downloadBtn = document.getElementById("downloadBtn");
 
 function loadTrack(i){
-  const t = tracks[i];
-  audio.src = t.src;
-  title.textContent = t.title;
-  cover.src = t.cover;
-  downloadBtn.href = t.src;
+  const t=tracks[i];
+  audio.src=t.file;
+  globalCover.src=t.cover;
+  globalTitle.textContent=t.title;
+  newCover.src=t.cover;
+  newTitle.textContent=t.title;
+  downloadBtn.href=t.file;
 }
 
-loadTrack(index);
-
-// управление
-document.querySelectorAll(".new-controls button").forEach(btn=>{
-  btn.onclick = ()=>{
-    const action = btn.dataset.action;
-
-    if(action === "play"){
-      if(audio.paused){
-        audio.play();
-        btn.textContent = "⏸";
-      }else{
-        audio.pause();
-        btn.textContent = "▶";
-      }
-    }
-
-    if(action === "stop"){
-      audio.pause();
-      audio.currentTime = 0;
-      document.querySelector('[data-action="play"]').textContent = "▶";
-    }
-
-    if(action === "next"){
-      index = isShuffle
-        ? Math.floor(Math.random()*tracks.length)
-        : (index+1)%tracks.length;
-      loadTrack(index);
-      audio.play();
-    }
-
-    if(action === "prev"){
-      index = (index-1+tracks.length)%tracks.length;
-      loadTrack(index);
-      audio.play();
-    }
-
-    if(action === "shuffle"){
-      isShuffle = !isShuffle;
-      btn.style.background = isShuffle ? "#555" : "#2a2a2a";
-    }
-  }
-});
-
-// прогресс
-audio.addEventListener("timeupdate",()=>{
-  progress.value = (audio.currentTime / audio.duration) * 100 || 0;
-  currentTime.textContent = format(audio.currentTime);
-  duration.textContent = format(audio.duration);
-});
-
-progress.oninput = ()=>{
-  audio.currentTime = (progress.value/100)*audio.duration;
-};
-
-audio.onended = ()=>{
-  index = isShuffle
-    ? Math.floor(Math.random()*tracks.length)
-    : (index+1)%tracks.length;
-  loadTrack(index);
+function playTrack(i){
+  currentIndex=i;
+  loadTrack(i);
   audio.play();
-};
-
-function format(sec){
-  if(!sec) return "0:00";
-  const m = Math.floor(sec/60);
-  const s = Math.floor(sec%60).toString().padStart(2,"0");
-  return `${m}:${s}`;
+  play.textContent='⏸';
 }
 
+play.onclick=()=>{
+  if(audio.paused){audio.play();play.textContent='⏸'}
+  else{audio.pause();play.textContent='▶'}
+};
+next.onclick=()=>playTrack((currentIndex+1)%tracks.length);
+prev.onclick=()=>playTrack((currentIndex-1+tracks.length)%tracks.length);
 
+audio.ontimeupdate=()=>{
+  globalBar.style.width=(audio.currentTime/audio.duration*100||0)+'%';
+};
+
+/* NEW RELEASE CONTROLS */
+document.querySelectorAll('.new-controls button').forEach(btn=>{
+  btn.onclick=()=>{
+    const a=btn.dataset.action;
+    if(a==='play') playTrack(currentIndex);
+    if(a==='next') next.onclick();
+    if(a==='prev') prev.onclick();
+  };
+});
+
+/* BURGER */
+const burger=document.querySelector('.burger');
+const menu=document.querySelector('.nav-menu');
+burger.onclick=()=>{
+  burger.classList.toggle('active');
+  menu.classList.toggle('active');
+};
 </script>
 
 </body>
