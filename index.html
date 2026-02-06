@@ -88,7 +88,53 @@ header{
 }
 
 /* HERO */
-.hero{height:100vh;background:url("hero1.jpg") center/cover no-repeat}
+.hero{
+  height:100vh;
+  background:url("hero1.jpg") center / contain no-repeat;
+  background-color:#000;
+  position:relative;
+}
+
+/* Контент слева */
+.hero-content{
+  position:absolute;
+  left:5%;
+  top:50%;
+  transform:translateY(-50%);
+  max-width:480px;
+  color:#fff;
+}
+
+/* Заголовок */
+.hero-title{
+  font-size:48px;
+  line-height:1.1;
+  margin:0 0 16px;
+}
+
+/* Подзаголовок */
+.hero-subtitle{
+  font-size:18px;
+  opacity:.85;
+  margin:0;
+}
+@media (max-width:768px){
+  .hero-content{
+    left:16px;
+    right:16px;
+    max-width:none;
+  }
+
+  .hero-title{
+    font-size:32px;
+  }
+
+  .hero-subtitle{
+    font-size:16px;
+  }
+}
+
+
 
 /* SECTIONS */
 section{max-width:1200px;margin:64px auto;padding:0 16px}
@@ -272,7 +318,13 @@ section{max-width:1200px;margin:64px auto;padding:0 16px}
   </div>
 </header>
 
-<div class="hero"></div>
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">PODТЕКСТ</h1>
+    <p class="hero-subtitle">Чувствуй между строк</p>
+  </div>
+</section>
+
 
 <section class="new-release">
   <div class="new-player">
