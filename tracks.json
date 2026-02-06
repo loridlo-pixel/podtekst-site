@@ -2,8 +2,8 @@
   {
     "title": "Авангард идёт вперёд",
     "file": "music/avangard-idet-vpered.mp3",
-    "cover": "cover/album-main3.jpg",
-    "album": "album3"
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
   },
   {
     "title": "Белая акация",
@@ -20,20 +20,20 @@
   {
     "title": "Боль разлуки",
     "file": "music/bol-razluki.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
   },
   {
     "title": "Всё словно в сказке",
     "file": "music/vse-slovno-v-skazke.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
   },
   {
     "title": "Две сестры",
     "file": "music/dve-sestry.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
   },
   {
     "title": "День рождения",
@@ -50,17 +50,127 @@
   {
     "title": "Жизнь дорога",
     "file": "music/zhizn-doroga.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "За всё судьбу благодарю",
+    "file": "music/za-vsyo-sudbu-blagodaryu.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Забыть тебя я не могу",
+    "file": "music/zabyt-tebya-ya-ne-mogu.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Зима",
+    "file": "music/zima.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Красные розы, подушка с наградой",
+    "file": "music/krasnye-rozy-podushka-s-nagradoy.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Любовь жестока",
+    "file": "music/lyubov-zhestoka.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Меня встречает город мой",
+    "file": "music/menya-vstrechaet-gorod-moy.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Мой милый город",
+    "file": "music/moy-milyy-gorod.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Море, солнце и песок",
+    "file": "music/more-solntse-i-pesok.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
   },
   {
     "title": "Новый год",
     "file": "music/novyy-god.mp3",
     "cover": "cover/album-main.jpg",
     "album": "album1"
+  },
+  {
+    "title": "Один лишь взгляд",
+    "file": "music/odin-lish-vzglyad.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Омск",
+    "file": "music/omsk.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Первый раз",
+    "file": "music/pervyy-raz.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Посмотри мне в глаза",
+    "file": "music/posmotri-mne-v-glaza.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Посмотри на небо",
+    "file": "music/posmotri-na-nebo.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Домовые чаты",
+    "file": "music/domovye-chaty.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Родная",
+    "file": "music/rodnaya.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Руки стынут на морозе",
+    "file": "music/ruki-stynut-na-moroze.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Сколько лет ожидания",
+    "file": "music/skolko-let-ozhidaniya.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Смысл жизни",
+    "file": "music/smysl-zhizni.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
+  },
+  {
+    "title": "Холодный ветер за окном",
+    "file": "music/kholodnyy-veter-za-oknom.mp3",
+    "cover": "cover/album-main.jpg",
+    "album": "album1"
   }
 ]
-
-
-
-
