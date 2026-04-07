@@ -1,177 +1,98 @@
-[
-  {
-    "title": "Авангард идёт вперёд",
-    "file": "music/avangard-idet-vpered.mp3",
-    "cover": "cover/album-main3.jpg",
-    "album": "album3"
-  },
-  {
-    "title": "Белая акация",
-    "file": "music/belaya-akaciya.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Бокал игристого вина",
-    "file": "music/bokal-igristogo-vina.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Боль разлуки",
-    "file": "music/bol-razluki.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "Всё словно в сказке",
-    "file": "music/vse-slovno-v-skazke.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
+{
+  "dve-sestry": {
     "title": "Две сестры",
-    "file": "music/dve-sestry.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
+    "cover": "cover/album1.jpg",
+    "tracks": [
+      {"title": "Белая акация", "file": "music/belaya-akaciya.mp3"},
+      {"title": "За всё судьбу благодарю", "file": "music/za-vsyo-sudbu-blagodaryu.mp3"},
+      {"title": "Посмотри на небо", "file": "music/posmotri-na-nebo.mp3"},
+      {"title": "Бокал игристого вина", "file": "music/bokal-igristogo-vina.mp3"},
+      {"title": "Красные розы, подушка с наградой", "file": "music/krasnye-rozy-podushka-s-nagradoy.mp3"},
+      {"title": "День рождения", "file": "music/den-rozhdeniya.mp3"},
+      {"title": "Новый год", "file": "music/novyy-god.mp3"},
+      {"title": "Долина Лурье", "file": "music/dolina-lure.mp3"},
+      {"title": "Любовь жестока", "file": "music/lyubov-zhestoka.mp3"},
+      {"title": "Две сестры", "file": "music/dve-sestry.mp3"},
+      {"title": "Родная", "file": "music/rodnaya.mp3"},
+      {"title": "Море, солнце и песок", "file": "music/more-solntse-i-pesok.mp3"}
+    ]
   },
-  {
-    "title": "День рождения",
-    "file": "music/den-rozhdeniya.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Долина Лурье",
-    "file": "music/dolina-lure.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Жизнь дорога",
-    "file": "music/zhizn-doroga.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "За всё судьбу благодарю",
-    "file": "music/za-vsyo-sudbu-blagodaryu.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Забыть тебя я не могу",
-    "file": "music/zabyt-tebya-ya-ne-mogu.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "Зима",
-    "file": "music/zima.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Красные розы, подушка с наградой",
-    "file": "music/krasnye-rozy-podushka-s-nagradoy.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Любовь жестока",
-    "file": "music/lyubov-zhestoka.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Меня встречает город мой",
-    "file": "music/menya-vstrechaet-gorod-moy.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "Мой милый город",
-    "file": "music/moy-milyy-gorod.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "Море, солнце и песок",
-    "file": "music/more-solntse-i-pesok.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Новый год",
-    "file": "music/novyy-god.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Один лишь взгляд",
-    "file": "music/odin-lish-vzglyad.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Омск",
-    "file": "music/omsk.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "Первый раз",
-    "file": "music/pervyy-raz.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "Посмотри мне в глаза",
-    "file": "music/posmotri-mne-v-glaza.mp3",
-    "cover": "cover/album-all.jpg",
-    "album": "all"
-  },
-  {
-    "title": "Посмотри на небо",
-    "file": "music/posmotri-na-nebo.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Домовые чаты",
-    "file": "music/domovye-chaty.mp3",
-    "cover": "cover/album-all.jpg",
-    "album": "all"
-  },
-  {
-    "title": "Родная",
-    "file": "music/rodnaya.mp3",
-    "cover": "cover/album-main.jpg",
-    "album": "album1"
-  },
-  {
-    "title": "Руки стынут на морозе",
-    "file": "music/ruki-stynut-na-moroze.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "Сколько лет ожидания",
-    "file": "music/skolko-let-ozhidaniya.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "Смысл жизни",
-    "file": "music/smysl-zhizni.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  },
-  {
-    "title": "Холодный ветер за окном",
-    "file": "music/kholodnyy-veter-za-oknom.mp3",
-    "cover": "cover/album-main2.jpg",
-    "album": "album2"
-  }
-]
 
+  "gorod-severnyh-vyug": {
+    "title": "Город северных вьюг",
+    "cover": "cover/album2.jpg",
+    "tracks": [
+      {"title": "Город северных вьюг", "file": "music/gorod-severnyh-vyug.mp3"},
+      {"title": "Сколько лет ожидания", "file": "music/skolko-let-ozhidaniya.mp3"},
+      {"title": "Первый раз", "file": "music/pervyy-raz.mp3"},
+      {"title": "Мой милый город", "file": "music/moy-milyy-gorod.mp3"},
+      {"title": "Меня встречает город мой", "file": "music/menya-vstrechaet-gorod-moy.mp3"},
+      {"title": "Жизнь дорога", "file": "music/zhizn-doroga.mp3"},
+      {"title": "Всё словно в сказке", "file": "music/vse-slovno-v-skazke.mp3"},
+      {"title": "Смысл жизни", "file": "music/smysl-zhizni.mp3"},
+      {"title": "Боль разлуки", "file": "music/bol-razluki.mp3"},
+      {"title": "Забыть тебя я не могу", "file": "music/zabyt-tebya-ya-ne-mogu.mp3"},
+      {"title": "Холодный ветер за окном", "file": "music/kholodnyy-veter-za-oknom.mp3"},
+      {"title": "Руки стынут на морозе", "file": "music/ruki-stynut-na-moroze.mp3"},
+      {"title": "Омск", "file": "music/omsk.mp3"}
+    ]
+  },
+
+  "devochka-skazka": {
+    "title": "Девочка сказка",
+    "cover": "cover/album3.jpg",
+    "tracks": [
+      {"title": "Бокал игристого вина", "file": "music/bokal-igristogo-vina.mp3"},
+      {"title": "Зима", "file": "music/zima.mp3"},
+      {"title": "День рождения в феврале", "file": "music/den-rozhdeniya-v-fevrale.mp3"},
+      {"title": "Ты мне скажи", "file": "music/ty-mne-skazhi.mp3"},
+      {"title": "Прихожу домой открываю чаты", "file": "music/prikhoju-domoy-otkryvayu-chaty.mp3"},
+      {"title": "Посмотри мне в глаза", "file": "music/posmotri-mne-v-glaza.mp3"},
+      {"title": "Один лишь взгляд", "file": "music/odin-lish-vzglyad.mp3"},
+      {"title": "Лишь о тебе мечтаю", "file": "music/lish-o-tebe-mechtayu.mp3"},
+      {"title": "А я мечтаю о весне (rock version)", "file": "music/a-ya-mechtayu-o-vesne-rock-version.mp3"},
+      {"title": "Девочка сказка", "file": "music/devochka-skazka.mp3"},
+      {"title": "А я мечтаю о весне", "file": "music/a-ya-mechtayu-o-vesne.mp3"},
+      {"title": "Жан-Клод Ван Дамм (в стиле Galibri & Mavik)", "file": "music/zhan-klod-van-damm-v-stile-galibri-mavik.mp3"},
+      {"title": "В первый день весны", "file": "music/v-pervyy-den-vesny.mp3"}
+    ]
+  },
+
+  "dnevnik-lyubvi": {
+    "title": "Дневник любви",
+    "cover": "cover/album4.jpg",
+    "tracks": [
+      {"title": "8 марта", "file": "music/8-marta.mp3"},
+      {"title": "Песня без слов", "file": "music/pesnya-bez-slov.mp3"},
+      {"title": "Это мой город", "file": "music/eto-moy-gorod.mp3"},
+      {"title": "Зажгутся свечи", "file": "music/zazhutsya-svechi.mp3"},
+      {"title": "Школьная любовь", "file": "music/shkolnaya-lyubov.mp3"},
+      {"title": "Незнакомка", "file": "music/neznakomka.mp3"},
+      {"title": "Дай руку брат", "file": "music/day-ruku-brat.mp3"},
+      {"title": "Зажгутся свечи в тишине", "file": "music/zazhutsya-svechi-v-tishine.mp3"},
+      {"title": "Дневник любви", "file": "music/dnevnik-lyubvi.mp3"},
+      {"title": "Прости, прощай", "file": "music/prosti-proshchay.mp3"},
+      {"title": "Родительский день", "file": "music/roditelskiy-den.mp3"},
+      {"title": "Гитара", "file": "music/gitara.mp3"}
+    ]
+  },
+
+  "za-avangard": {
+    "title": "За авангард",
+    "cover": "cover/album5.jpg",
+    "tracks": [
+      {"title": "Точность движений", "file": "music/tochnost-dvizheniy.mp3"},
+      {"title": "Завтра выезд", "file": "music/zavtra-vyezd.mp3"},
+      {"title": "Авангард идёт вперёд", "file": "music/avangard-idet-vpered.mp3"},
+      {"title": "Вольная птица", "file": "music/volnaya-ptica.mp3"}
+    ]
+  },
+
+  "novyy": {
+    "title": "Новый",
+    "cover": "cover/album6.jpg",
+    "tracks": [
+      {"title": "Не могу забыть", "file": "music/ne-mogu-zabyt.mp3"}
+    ]
+  }
+}
