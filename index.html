@@ -1,350 +1,152 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>PODТЕКСТ — Official</title>
-
 <style>
 :root{
   --bg:#0f0f0f;
   --bg2:#161616;
   --text:#eaeaea;
   --muted:#9a9a9a;
-  --line:#222;
-  --card:#1c1c1c;
-  --btn:#2a2a2a;
+  --accent:#ff5a5f;
 }
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
+*{box-sizing:border-box;margin:0;padding:0;}
 body{
-  margin:0;
   font-family:Inter,system-ui,Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
-  padding-bottom:96px;
-  -webkit-tap-highlight-color: transparent;
-}
-
-img{
-  max-width:100%;
-  display:block;
+  overflow-x:hidden;
+  padding-bottom:120px;
 }
 
 /* HEADER */
 header{
   position:sticky;
   top:0;
+  height:60px;
   z-index:20;
-  height:80px;
-  background:rgba(15,15,15,.9);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,.04);
+  background:rgba(15,15,15,.95);
+  backdrop-filter:blur(10px);
 }
-
 .nav{
-  max-width:1200px;
-  margin:0 auto;
-  height:80px;
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  padding:0 16px;
-  gap:12px;
-}
-
-.nav img{
-  height:72px;
-  width:auto;
-  transform:scale(1.7);
-  transform-origin:center;
-  justify-self:center;
-}
-
-.nav-menu{
-  justify-self:end;
+  max-width:600px;
+  margin:auto;
+  height:60px;
   display:flex;
-  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 12px;
 }
-
-.nav-menu a{
-  color:var(--text);
-  text-decoration:none;
-  opacity:.8;
-}
-
-.nav-menu a:hover{opacity:1}
-
-/* BURGER */
+.nav img{height:40px;}
 .burger{
-  display:none;
+  display:flex;
   flex-direction:column;
-  gap:5px;
-  width:28px;
+  gap:3px;
+  width:24px;
   cursor:pointer;
-  justify-self:end;
-  padding:8px 0;
 }
-
 .burger span{
   height:3px;
   background:#fff;
   border-radius:2px;
-  transition:.25s;
+  transition:.3s;
 }
-
 .burger.active span:nth-child(1){
   transform:rotate(45deg) translate(5px,5px);
 }
-.burger.active span:nth-child(2){
-  opacity:0;
-}
+.burger.active span:nth-child(2){opacity:0;}
 .burger.active span:nth-child(3){
-  transform:rotate(-45deg) translate(6px,-6px);
+  transform:rotate(-45deg) translate(5px,-5px);
 }
+.nav-menu-mobile{
+  display:none;
+  position:fixed;
+  top:60px;
+  right:0;
+  width:200px;
+  height:100vh;
+  background:#0f0f0f;
+  flex-direction:column;
+  gap:12px;
+  padding:20px;
+}
+.nav-menu-mobile.active{display:flex;}
 
 /* HERO */
 .hero{
-  margin:0;
-  padding:0;
-  min-height:calc(100vh - 80px);
   width:100%;
-  background:url("hero2.jpg") center center / contain no-repeat;
-  background-color:#0f0f0f;
+  height:40vh;
+  background:url("hero2.jpg") center/cover no-repeat;
   position:relative;
   overflow:hidden;
 }
-
 .hero::before{
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    to right,
-    rgba(0,0,0,.6),
-    rgba(0,0,0,.15),
-    rgba(0,0,0,0)
-  );
-  pointer-events:none;
+  background:linear-gradient(to right, rgba(0,0,0,.7), rgba(0,0,0,0));
 }
-
 .hero-content{
   position:absolute;
-  left:5%;
+  left:12px;
   top:50%;
   transform:translateY(-50%);
-  max-width:480px;
   color:#fff;
-  z-index:1;
 }
-
-.hero-title{
-  font-size:48px;
-  line-height:1.1;
-  margin:0 0 16px;
-}
-
-.hero-subtitle{
-  font-size:18px;
-  opacity:.85;
-  margin:0;
-}
+.hero-title{font-size:28px;margin-bottom:8px;}
+.hero-subtitle{font-size:14px;opacity:.85;}
 
 /* SECTIONS */
-section{
-  max-width:1200px;
-  margin:64px auto;
-  padding:0 16px;
-}
+section{max-width:600px;margin:auto;padding:12px;}
 
-h2{
-  margin:0 0 16px;
-}
-
-.about-text{
-  color:#ddd;
-  line-height:1.65;
-  font-size:15px;
-}
-
-.about-text p{
-  margin:0 0 12px;
-}
-
-/* NEW RELEASE */
-.new-release{
-  display:flex;
-  justify-content:center;
-}
-
-.new-player{
-  display:flex;
-  align-items:center;
-  gap:20px;
-  background:var(--card);
-  border-radius:16px;
-  padding:20px;
-  max-width:900px;
-  width:100%;
-}
-
-.new-cover{
-  width:120px;
-  height:120px;
-  border-radius:12px;
-  object-fit:cover;
-  background:#111;
-}
-
-.new-info{
-  flex:1;
-  min-width:0;
-}
-
-.new-title{
-  font-size:18px;
-  font-weight:600;
-  line-height:1.3;
-  margin-bottom:6px;
-  word-break:break-word;
-}
-
-.new-artist{
-  font-size:14px;
-  color:#aaa;
-}
-
-.new-controls{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.icon-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:none;
-  border:none;
-  cursor:pointer;
-  width:40px;
-  height:40px;
-  border-radius:999px;
-  background:#2a2a2a;
-  color:#fff;
-  flex:0 0 auto;
-  touch-action:manipulation;
-}
-
-.icon-btn:hover{background:#444}
-.icon-btn svg{
-  fill:#fff;
-  transition: transform .2s, opacity .2s;
-}
-.icon-btn:hover svg{
-  transform:scale(1.08);
-  opacity:.85;
-}
+/* ABOUT */
+.about-text{color:#ddd;line-height:1.5;font-size:14px;}
 
 /* ALBUMS */
 .albums{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:20px;
+  display:flex;
+  overflow-x:auto;
+  gap:12px;
+  padding:12px 0;
+  -webkit-overflow-scrolling:touch;
 }
-
 .album-card{
+  min-width:100px;
+  flex-shrink:0;
   text-align:center;
   opacity:.6;
   cursor:pointer;
-  user-select:none;
 }
-
-.album-card.active{opacity:1}
-
+.album-card.active{opacity:1;}
 .album-card img{
-  width:100%;
-  aspect-ratio:1/1;
+  width:100px;
+  height:100px;
   border-radius:12px;
   object-fit:cover;
-  background:#111;
 }
-
-.album-title{
-  margin-top:8px;
-  font-size:14px;
-  line-height:1.3;
-}
+.album-title{font-size:12px;margin-top:4px;color:#fff;}
 
 /* TRACKS */
 .tracks{
   background:var(--bg2);
-  border-radius:16px;
+  border-radius:12px;
   overflow:hidden;
-  margin-top:24px;
-  border:1px solid rgba(255,255,255,.03);
 }
-
 .track{
-  padding:16px;
-  border-bottom:1px solid var(--line);
-}
-
-.track:last-child{
-  border-bottom:none;
-}
-
-.track.active{
-  background:#1b1b1b;
-}
-
-.track-header{
-  display:grid;
-  grid-template-columns:48px 1fr auto auto;
-  gap:12px;
-  align-items:center;
-}
-
-.track-cover{
-  width:48px;
-  height:48px;
-  border-radius:8px;
-  object-fit:cover;
-  background:#111;
-}
-
-.track-title{
-  min-width:0;
-  word-break:break-word;
-}
-
-.track-play{
-  cursor:pointer;
-  width:32px;
-  height:32px;
+  padding:12px;
+  border-bottom:1px solid #222;
   display:flex;
   align-items:center;
-  justify-content:center;
-  border-radius:999px;
-  background:#2a2a2a;
-  flex:0 0 auto;
+  justify-content:space-between;
 }
-
-.track-download{
-  color:#fff;
-  text-decoration:none;
-  opacity:.55;
-  font-size:18px;
-  width:28px;
-  height:28px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.track-download:hover{opacity:1}
+.track:last-child{border-bottom:none;}
+.track.active{background:#1b1b1b;}
+.track-title{flex:1;margin-left:8px;font-size:14px;}
+.track-play, .track-download{cursor:pointer;}
+.track-download{opacity:.5;}
+.track-download:hover{opacity:1;}
 
 /* GLOBAL PLAYER */
 .global-player{
@@ -356,239 +158,78 @@ h2{
   border-top:1px solid #222;
   display:flex;
   align-items:center;
-  gap:16px;
-  padding:12px 16px;
+  gap:8px;
+  padding:8px 12px;
   z-index:50;
+  transition:all .3s ease;
 }
-
+.global-player.fullscreen{
+  top:0;
+  bottom:0;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:16px;
+}
+.global-cover{
+  width:48px;
+  height:48px;
+  border-radius:8px;
+  object-fit:cover;
+}
+.global-player.fullscreen .global-cover{
+  width:80%;
+  height:auto;
+  border-radius:12px;
+}
+.global-info{flex:1;overflow:hidden;text-align:center;}
+.global-title{
+  font-size:14px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.global-player.fullscreen .global-title{
+  font-size:20px;
+  margin-top:12px;
+}
+.global-controls{
+  display:flex;
+  gap:8px;
+}
+.global-controls button{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:20px;
+  cursor:pointer;
+}
 .global-progress{
   position:absolute;
-  top:-3px;
+  bottom:0;
   left:0;
   height:3px;
   width:100%;
   background:#333;
 }
-
 .global-bar{
   height:100%;
   width:0%;
-  background:#fff;
+  background:var(--accent);
+  transition:width .1s linear;
 }
 
-.global-cover{
-  width:56px;
-  height:56px;
-  border-radius:8px;
-  object-fit:cover;
-  background:#111;
-  flex:0 0 auto;
-}
-
-.global-info{
-  flex:1;
-  min-width:0;
-}
-
-.global-title{
-  font-size:14px;
-  line-height:1.35;
-  word-break:break-word;
-}
-
-.global-controls{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex:0 0 auto;
-}
-
-.global-controls button{
-  background:none;
-  border:none;
-  color:#fff;
-  cursor:pointer;
-}
-
-#shuffle.active{
-  opacity:1;
-}
-
-#shuffle{
-  opacity:.55;
-}
-
-/* MOBILE */
-@media (max-width:768px){
-  header{
-    height:72px;
-  }
-
-  .nav{
-    height:72px;
-    grid-template-columns:auto 1fr auto;
-    padding:0 12px;
-  }
-
-  .nav img{
-    height:62px;
-    transform:scale(1.35);
-  }
-
-  .nav-menu{
-    position:fixed;
-    top:72px;
-    right:-100%;
-    width:min(260px, 82vw);
-    height:calc(100vh - 72px);
-    background:#0f0f0f;
-    flex-direction:column;
-    padding:20px;
-    transition:.28s ease;
-    border-left:1px solid rgba(255,255,255,.06);
-  }
-
-  .nav-menu.active{
-    right:0;
-  }
-
-  .burger{
-    display:flex;
-  }
-
-  .hero{
-    min-height:calc(100vh - 72px);
-    background-size:cover;
-    background-position:center top;
-  }
-
-  .hero-content{
-    left:16px;
-    right:16px;
-    max-width:none;
-  }
-
-  .hero-title{
-    font-size:32px;
-  }
-
-  .hero-subtitle{
-    font-size:16px;
-  }
-
-  section{
-    margin:40px auto;
-    padding:0 12px;
-  }
-
-  .new-player{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:12px;
-    padding:16px;
-  }
-
-  .new-cover{
-    width:100%;
-    height:auto;
-    aspect-ratio:1/1;
-  }
-
-  .new-controls{
-    width:100%;
-    justify-content:space-between;
-  }
-
-  .albums{
-    grid-template-columns:repeat(2, minmax(0,1fr));
-    gap:14px;
-  }
-
-  .track{
-    padding:14px 12px;
-  }
-
-  .track-header{
-    grid-template-columns:40px 1fr auto;
-    gap:10px;
-  }
-
-  .track-download{
-    display:none;
-  }
-
-  .global-player{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:10px;
-    padding:10px 12px 12px;
-  }
-
-  .global-cover{
-    width:48px;
-    height:48px;
-  }
-
-  .global-controls{
-    width:100%;
-    justify-content:space-between;
-  }
-
-  body{
-    padding-bottom:132px;
-  }
-}
-
-@media (max-width:420px){
-  .albums{
-    grid-template-columns:1fr;
-  }
-
-  .global-title{
-    font-size:13px;
-  }
-
-  .new-title{
-    font-size:17px;
-  }
-}
+/* SCROLLBAR HIDE */
+.albums::-webkit-scrollbar{display:none;}
 </style>
 </head>
-
 <body>
-
-<svg style="display:none;">
-  <symbol id="icon-play" viewBox="0 0 24 24">
-    <path d="M8 5v14l11-7z"></path>
-  </symbol>
-  <symbol id="icon-pause" viewBox="0 0 24 24">
-    <path d="M6 19h4V5H6zm8-14v14h4V5h-4z"></path>
-  </symbol>
-  <symbol id="icon-next" viewBox="0 0 24 24">
-    <path d="M6 18l8.5-6L6 6v12zm9-12v12h2V6h-2z"></path>
-  </symbol>
-  <symbol id="icon-prev" viewBox="0 0 24 24">
-    <path d="M18 6l-8.5 6L18 18V6zm-9 0v12h-2V6h2z"></path>
-  </symbol>
-  <symbol id="icon-stop" viewBox="0 0 24 24">
-    <path d="M6 6h12v12H6z"></path>
-  </symbol>
-  <symbol id="icon-shuffle" viewBox="0 0 24 24">
-    <path d="M16 3h5v5l-1.5-1.5-4 4-2-2 4-4L16 3zM4 6h3l5 5-2 2-4-4H4V6zm12 11l1.5-1.5 4 4V14h-5l1.5 1.5-4 4 2 2 4-4z"></path>
-  </symbol>
-</svg>
 
 <header>
   <div class="nav">
-    <div></div>
-    <img src="logo.png" alt="PODТЕКСТ">
-    <nav class="nav-menu" aria-label="Основная навигация">
-      <a href="#about">О группе</a>
-      <a href="#tracks">Треки</a>
-    </nav>
-    <div class="burger" aria-label="Меню" role="button" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
+    <img src="logo.png" loading="lazy">
+    <div class="burger"><span></span><span></span><span></span></div>
+    <nav class="nav-menu-mobile"></nav>
   </div>
 </header>
 
@@ -599,419 +240,147 @@ h2{
   </div>
 </section>
 
-<section class="new-release">
-  <div class="new-player">
-    <img class="new-cover" id="newCover" src="cover/album-all.jpg" alt="">
-    <div class="new-info">
-      <div class="new-title" id="newTitle">—</div>
-      <div class="new-artist">PODТЕКСТ</div>
-    </div>
-    <div class="new-controls">
-      <button class="icon-btn" data-action="prev" type="button" aria-label="Предыдущий трек">
-        <svg width="20" height="20"><use href="#icon-prev"></use></svg>
-      </button>
-      <button class="icon-btn" data-action="play" type="button" aria-label="Воспроизвести">
-        <svg width="20" height="20"><use href="#icon-play"></use></svg>
-      </button>
-      <button class="icon-btn" data-action="stop" type="button" aria-label="Стоп">
-        <svg width="20" height="20"><use href="#icon-stop"></use></svg>
-      </button>
-      <button class="icon-btn" data-action="next" type="button" aria-label="Следующий трек">
-        <svg width="20" height="20"><use href="#icon-next"></use></svg>
-      </button>
-      <button class="icon-btn" data-action="shuffle" type="button" aria-label="Случайный порядок" id="shuffleBtn">
-        <svg width="20" height="20"><use href="#icon-shuffle"></use></svg>
-      </button>
-      <a id="downloadBtn" download class="icon-btn" href="#" aria-label="Скачать трек">⬇</a>
-    </div>
-  </div>
-</section>
-
 <section id="about">
   <h2>О группе</h2>
   <div class="about-text">
     <p>PODТЕКСТ — музыкальный проект с широким жанровым диапазоном и акцентом на смысл.</p>
-    <p>Проект работает на стыке лирической поп-музыки, рока, шансона, рэпа и других направлений, объединяя разные стили единым авторским подходом. В основе каждого трека — текст с глубиной, вторым планом и подтекстом, который раскрывается при внимательном прослушивании.</p>
-    <p>Автор слов и музыки Дмитрий Кунгуров — разносторонний артист, свободно работающий с формой, настроением и жанром. Лирика варьируется от личных и эмоциональных историй до социальных и философских тем. Музыка всегда подчинена смыслу, а не шаблону.</p>
-    <p>PODТЕКСТ ориентирован на слушателя, которому важны не только мелодия и подача, но и содержание. Проект органично чувствует себя как в камерных композициях, так и в энергичных треках, сохраняя узнаваемый стиль.</p>
-    <p>PODТЕКСТ — это музыка, в которой между строк всегда есть больше, чем кажется на первый взгляд.</p>
+    <p>Проект работает на стыке лирической поп-музыки, рока, шансона, рэпа и других направлений, объединяя разные стили единым авторским подходом. В основе каждого трека — текст с глубиной, вторым планом и подтекстом.</p>
+    <p>Автор слов и музыки Дмитрий Кунгуров — разносторонний артист, свободно работающий с формой, настроением и жанром.</p>
   </div>
 </section>
 
 <section id="tracks">
-  <h2>Треки и альбомы</h2>
-  <div class="albums">
-    <div class="album-card active" data-album="all">
-      <img src="cover/album-all.jpg" alt="">
-      <div class="album-title">Все треки</div>
-    </div>
-    <div class="album-card" data-album="album1">
-      <img src="cover/album-main.jpg" alt="">
-      <div class="album-title">Две сестры</div>
-    </div>
-    <div class="album-card" data-album="album2">
-      <img src="cover/album-main2.jpg" alt="">
-      <div class="album-title">Город северных вьюг</div>
-    </div>
-    <div class="album-card" data-album="album3">
-      <img src="cover/album-main3.jpg" alt="">
-      <div class="album-title">Девочка сказка</div>
-    </div>
-    <div class="album-card" data-album="album4">
-      <img src="cover/album-main4.jpg" alt="">
-      <div class="album-title">Дневник любви</div>
-    </div>
-    <div class="album-card" data-album="album5">
-      <img src="cover/album-main5.jpg" alt="">
-      <div class="album-title">За авангард</div>
-    </div>
-    <div class="album-card" data-album="album6">
-      <img src="cover/album-main6.jpg" alt="">
-      <div class="album-title">Новый</div>
-    </div>
-  </div>
-
+  <h2>Альбомы</h2>
+  <div class="albums" id="albumList"></div>
   <div class="tracks" id="tracksList"></div>
 </section>
 
-<div class="global-player">
+<div class="global-player" id="player">
   <div class="global-progress"><div class="global-bar" id="globalBar"></div></div>
-  <img class="global-cover" id="globalCover" src="cover/album-all.jpg" alt="">
+  <img class="global-cover" id="globalCover" loading="lazy">
   <div class="global-info">
     <div class="global-title" id="globalTitle">—</div>
   </div>
   <div class="global-controls">
-    <button id="shuffle" class="icon-btn" type="button" aria-label="Случайный порядок">
-      <svg width="20" height="20"><use href="#icon-shuffle"></use></svg>
-    </button>
-    <button id="prev" class="icon-btn" type="button" aria-label="Предыдущий трек">
-      <svg width="20" height="20"><use href="#icon-prev"></use></svg>
-    </button>
-    <button id="play" class="icon-btn" type="button" aria-label="Воспроизвести">
-      <svg width="20" height="20"><use href="#icon-play"></use></svg>
-    </button>
-    <button id="stop" class="icon-btn" type="button" aria-label="Стоп">
-      <svg width="20" height="20"><use href="#icon-stop"></use></svg>
-    </button>
-    <button id="next" class="icon-btn" type="button" aria-label="Следующий трек">
-      <svg width="20" height="20"><use href="#icon-next"></use></svg>
-    </button>
+    <button id="prev">⏮</button>
+    <button id="play">▶️</button>
+    <button id="stop">⏹</button>
+    <button id="next">⏭</button>
+    <button id="shuffle">🔀</button>
+    <button id="fullscreen">⤢</button>
   </div>
 </div>
 
 <script>
+// ======= TRACKS DATA =======
+const albums = [
+  {slug:"album1", title:"Две сестры", cover:"cover/album-main.jpg"},
+  {slug:"album2", title:"Город северных вьюг", cover:"cover/album-main2.jpg"},
+  {slug:"album3", title:"Авангард идёт вперёд", cover:"cover/album-main3.jpg"}
+];
 const tracks = [
-  { title: "Белая акация", file: "music/belaya-akaciya.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "За всё судьбу благодарю", file: "music/za-vsyo-sudbu-blagodaryu.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "Посмотри на небо", file: "music/posmotri-na-nebo.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "Бокал игристого вина", file: "music/bokal-igristogo-vina.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "Красные розы, подушка с наградой", file: "music/krasnye-rozy-podushka-s-nagradoy.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "День рождения", file: "music/den-rozhdeniya.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "Новый год", file: "music/novyy-god.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "Долина Лурье", file: "music/dolina-lure.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "Любовь жестока", file: "music/lyubov-zhestoka.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "Две сестры", file: "music/dve-sestry.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "Родная", file: "music/rodnaya.mp3", cover: "cover/album-main.jpg", album: "album1" },
-  { title: "Море, солнце и песок", file: "music/more-solntse-i-pesok.mp3", cover: "cover/album-main.jpg", album: "album1" },
-
-  { title: "Город северных вьюг", file: "music/gorod-severnyh-vyug.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Сколько лет ожидания", file: "music/skolko-let-ozhidaniya.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Первый раз", file: "music/pervyy-raz.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Мой милый город", file: "music/moy-milyy-gorod.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Меня встречает город мой", file: "music/menya-vstrechaet-gorod-moy.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Жизнь дорога", file: "music/zhizn-doroga.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Всё словно в сказке", file: "music/vse-slovno-v-skazke.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Смысл жизни", file: "music/smysl-zhizni.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Боль разлуки", file: "music/bol-razluki.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Забыть тебя я не могу", file: "music/zabyt-tebya-ya-ne-mogu.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Холодный ветер за окном", file: "music/kholodnyy-veter-za-oknom.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Руки стынут на морозе", file: "music/ruki-stynut-na-moroze.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-  { title: "Омск", file: "music/omsk.mp3", cover: "cover/album-main2.jpg", album: "album2" },
-
-  { title: "Бокал игристого вина", file: "music/bokal-igristogo-vina.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "Зима", file: "music/zima.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "День рождения в феврале", file: "music/den-rozhdeniya-v-fevrale.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "Ты мне скажи", file: "music/ty-mne-skazhi.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "Прихожу домой открываю чаты", file: "music/prikhoju-domoy-otkryvayu-chaty.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "Посмотри мне в глаза", file: "music/posmotri-mne-v-glaza.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "Один лишь взгляд", file: "music/odin-lish-vzglyad.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "Лишь о тебе мечтаю", file: "music/lish-o-tebe-mechtayu.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "А я мечтаю о весне (rock version)", file: "music/a-ya-mechtayu-o-vesne-rock-version.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "Девочка сказка", file: "music/devochka-skazka.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "А я мечтаю о весне", file: "music/a-ya-mechtayu-o-vesne.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "Жан-Клод Ван Дамм (в стиле Galibri & Mavik)", file: "music/zhan-klod-van-damm-v-stile-galibri-mavik.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-  { title: "В первый день весны", file: "music/v-pervyy-den-vesny.mp3", cover: "cover/album-main3.jpg", album: "album3" },
-
-  { title: "8 марта", file: "music/8-marta.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Песня без слов", file: "music/pesnya-bez-slov.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Это мой город", file: "music/eto-moy-gorod.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Зажгутся свечи", file: "music/zazhutsya-svechi.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Школьная любовь", file: "music/shkolnaya-lyubov.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Незнакомка", file: "music/neznakomka.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Дай руку брат", file: "music/day-ruku-brat.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Зажгутся свечи в тишине", file: "music/zazhutsya-svechi-v-tishine.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Дневник любви", file: "music/dnevnik-lyubvi.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Прости, прощай", file: "music/prosti-proshchay.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Родительский день", file: "music/roditelskiy-den.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Это мой город", file: "music/eto-moy-gorod.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-  { title: "Гитара", file: "music/gitara.mp3", cover: "cover/album-main4.jpg", album: "album4" },
-
-  { title: "Точность движений", file: "music/tochnost-dvizheniy.mp3", cover: "cover/album-main5.jpg", album: "album5" },
-  { title: "Завтра выезд", file: "music/zavtra-vyezd.mp3", cover: "cover/album-main5.jpg", album: "album5" },
-  { title: "Авангард идёт вперёд", file: "music/avangard-idet-vpered.mp3", cover: "cover/album-main5.jpg", album: "album5" },
-  { title: "Авангард идёт вперёд", file: "music/avangard-idet-vpered.mp3", cover: "cover/album-main5.jpg", album: "album5" },
-  { title: "Вольная птица", file: "music/volnaya-ptica.mp3", cover: "cover/album-main5.jpg", album: "album5" },
-
-  { title: "Не могу забыть", file: "music/ne-mogu-zabyt.mp3", cover: "cover/album-main6.jpg", album: "album6" }
+  {title:"Белая акация", album:"album1", cover:"cover/album-main.jpg", file:"music/belaya-akaciya.mp3"},
+  {title:"За всё судьбу благодарю", album:"album1", cover:"cover/album-main.jpg", file:"music/za-vsyo-sudbu-blagodaryu.mp3"},
+  {title:"Посмотри на небо", album:"album1", cover:"cover/album-main.jpg", file:"music/posmotri-na-nebo.mp3"},
+  {title:"Город северных вьюг", album:"album2", cover:"cover/album-main2.jpg", file:"music/gorod-severnyh-vyug.mp3"},
+  {title:"Сколько лет ожидания", album:"album2", cover:"cover/album-main2.jpg", file:"music/skolko-let-ozhidaniya.mp3"},
+  {title:"Бокал игристого вина", album:"album3", cover:"cover/album-main3.jpg", file:"music/bokal-igristogo-vina.mp3"}
 ];
 
-let currentIndex = 0;
-let currentAlbum = 'all';
-let isShuffle = false;
-const audio = new Audio();
+// ======= RENDER ALBUMS =======
+const albumList = document.getElementById('albumList');
+albums.forEach(a=>{
+  const div = document.createElement('div');
+  div.className='album-card';
+  div.dataset.album=a.slug;
+  div.innerHTML=`<img src="${a.cover}" loading="lazy"><div class="album-title">${a.title}</div>`;
+  albumList.appendChild(div);
+});
 
-const tracksList = document.getElementById('tracksList');
+// ======= AUDIO PLAYER =======
+let currentIndex = 0;
+let shuffled = false;
+const audio = new Audio();
 const globalCover = document.getElementById('globalCover');
 const globalTitle = document.getElementById('globalTitle');
-const newCover = document.getElementById('newCover');
-const newTitle = document.getElementById('newTitle');
-const downloadBtn = document.getElementById('downloadBtn');
 const globalBar = document.getElementById('globalBar');
-
-const playBtn = document.getElementById('play');
-const nextBtn = document.getElementById('next');
-const prevBtn = document.getElementById('prev');
-const stopBtn = document.getElementById('stop');
-const shuffleBtn = document.getElementById('shuffle');
-
-function setPlayIcon(){
-  playBtn.innerHTML = `<svg width="20" height="20"><use href="#icon-play"></use></svg>`;
-}
-function setPauseIcon(){
-  playBtn.innerHTML = `<svg width="20" height="20"><use href="#icon-pause"></use></svg>`;
-}
-
-function getVisibleTracks(album){
-  if(album === 'all') return tracks;
-  return tracks.filter(t => t.album === album);
-}
-
-function renderTracks(album){
-  currentAlbum = album;
-  const visible = getVisibleTracks(album);
-  tracksList.innerHTML = '';
-
-  const fragment = document.createDocumentFragment();
-
-  visible.forEach((t) => {
-    const originalIndex = tracks.indexOf(t);
-    const el = document.createElement('div');
-    el.className = 'track';
-    el.dataset.index = originalIndex;
-
-    el.innerHTML = `
-      <div class="track-header">
-        <img class="track-cover" src="${t.cover}" alt="">
-        <div class="track-title">${t.title}</div>
-        <div class="track-play" title="Play">
-          <svg width="16" height="16"><use href="#icon-play"></use></svg>
-        </div>
-        <a class="track-download" href="${t.file}" download title="Download">⬇</a>
-      </div>
-    `;
-
-    el.querySelector('.track-play').onclick = () => playTrack(originalIndex);
-    fragment.appendChild(el);
-  });
-
-  tracksList.appendChild(fragment);
-  updateActiveTrack();
-}
-
-function updateActiveTrack(){
-  const items = tracksList.querySelectorAll('.track');
-  items.forEach(item => item.classList.remove('active'));
-
-  const active = tracksList.querySelector(`.track[data-index="${currentIndex}"]`);
-  if(active) active.classList.add('active');
-}
+const player = document.getElementById('player');
 
 function loadTrack(i){
-  if(!tracks.length) return;
-
-  currentIndex = (i + tracks.length) % tracks.length;
-  const t = tracks[currentIndex];
-
-  audio.src = t.file;
-  globalCover.src = t.cover;
-  globalTitle.textContent = t.title;
-  newCover.src = t.cover;
-  newTitle.textContent = t.title;
-  downloadBtn.href = t.file;
-
-  updateActiveTrack();
-  localStorage.setItem('trackIndex', currentIndex);
+  const t = tracks[i];
+  currentIndex=i;
+  audio.src=t.file;
+  globalCover.src=t.cover;
+  globalTitle.textContent=t.title;
+  highlightTrack(i);
 }
-
 function playTrack(i){
   loadTrack(i);
   audio.play();
-  setPauseIcon();
+  playBtn.textContent="⏸";
+}
+function stopTrack(){audio.pause(); audio.currentTime=0; playBtn.textContent="▶️";}
+function nextTrack(){
+  if(shuffled) currentIndex=Math.floor(Math.random()*tracks.length);
+  else currentIndex=(currentIndex+1)%tracks.length;
+  playTrack(currentIndex);
+}
+function prevTrack(){
+  if(shuffled) currentIndex=Math.floor(Math.random()*tracks.length);
+  else currentIndex=(currentIndex-1+tracks.length)%tracks.length;
+  playTrack(currentIndex);
+}
+function toggleShuffle(){shuffled=!shuffled; shuffleBtn.style.color=shuffled?"var(--accent)":"#fff";}
+function toggleFullscreen(){player.classList.toggle('fullscreen');}
+
+// ======= TRACKS RENDER =======
+function renderTracks(album){
+  const list = document.getElementById('tracksList');
+  list.innerHTML='';
+  tracks.forEach((t,i)=>{
+    if(album && t.album!==album) return;
+    const div=document.createElement('div');
+    div.className='track';
+    div.innerHTML=`<div class="track-title">${t.title}</div><div class="track-play">▶️</div>`;
+    div.querySelector('.track-play').onclick=()=>playTrack(i);
+    list.appendChild(div);
+  });
+}
+function highlightTrack(i){
+  document.querySelectorAll('.track').forEach((el,j)=>{
+    el.classList.toggle('active',i===j);
+  });
 }
 
-function stopTrack(){
-  audio.pause();
-  audio.currentTime = 0;
-  setPlayIcon();
-  globalBar.style.width = '0%';
-  localStorage.setItem('trackTime', '0');
-}
+// ======= CONTROLS =======
+const playBtn=document.getElementById('play');
+const stopBtn=document.getElementById('stop');
+const nextBtn=document.getElementById('next');
+const prevBtn=document.getElementById('prev');
+const shuffleBtn=document.getElementById('shuffle');
+const fullscreenBtn=document.getElementById('fullscreen');
 
-function getNextIndex(){
-  const visible = currentAlbum === 'all' ? tracks : tracks.filter(t => t.album === currentAlbum);
-  if(!visible.length) return currentIndex;
+playBtn.onclick=()=>{audio.paused?audio.play():audio.pause(); playBtn.textContent=audio.paused?"▶️":"⏸";}
+stopBtn.onclick=stopTrack;
+nextBtn.onclick=nextTrack;
+prevBtn.onclick=prevTrack;
+shuffleBtn.onclick=toggleShuffle;
+fullscreenBtn.onclick=toggleFullscreen;
 
-  if(isShuffle){
-    const randomTrack = visible[Math.floor(Math.random() * visible.length)];
-    return tracks.indexOf(randomTrack);
-  }
+audio.ontimeupdate=()=>{globalBar.style.width=(audio.currentTime/audio.duration*100||0)+'%';};
+audio.onended=nextTrack;
 
-  const currentInVisible = visible.findIndex(t => tracks.indexOf(t) === currentIndex);
-  const nextInVisible = (currentInVisible + 1) % visible.length;
-  return tracks.indexOf(visible[nextInVisible]);
-}
-
-function getPrevIndex(){
-  const visible = currentAlbum === 'all' ? tracks : tracks.filter(t => t.album === currentAlbum);
-  if(!visible.length) return currentIndex;
-
-  if(isShuffle){
-    const randomTrack = visible[Math.floor(Math.random() * visible.length)];
-    return tracks.indexOf(randomTrack);
-  }
-
-  const currentInVisible = visible.findIndex(t => tracks.indexOf(t) === currentIndex);
-  const prevInVisible = (currentInVisible - 1 + visible.length) % visible.length;
-  return tracks.indexOf(visible[prevInVisible]);
-}
-
-function saveState(){
-  localStorage.setItem('trackIndex', String(currentIndex));
-  localStorage.setItem('trackTime', String(audio.currentTime || 0));
-}
-
-function formatTime(t){
-  if(!isFinite(t) || t < 0) return '0:00';
-  const m = Math.floor(t / 60);
-  const s = Math.floor(t % 60).toString().padStart(2, '0');
-  return `${m}:${s}`;
-}
-
-audio.addEventListener('loadedmetadata', () => {
-  const savedTime = parseFloat(localStorage.getItem('trackTime') || '0');
-  if(savedTime > 0 && isFinite(savedTime) && savedTime < audio.duration) {
-    audio.currentTime = savedTime;
-  }
-});
-
-audio.addEventListener('timeupdate', () => {
-  const percent = audio.duration ? (audio.currentTime / audio.duration * 100) : 0;
-  globalBar.style.width = percent + '%';
-  saveState();
-});
-
-audio.addEventListener('ended', () => {
-  const nextIndex = getNextIndex();
-  playTrack(nextIndex);
-});
-
-playBtn.onclick = () => {
-  if(audio.src && !audio.paused){
-    audio.pause();
-    setPlayIcon();
-  }else{
-    if(!audio.src){
-      loadTrack(currentIndex);
-    }
-    audio.play();
-    setPauseIcon();
-  }
-};
-
-nextBtn.onclick = () => playTrack(getNextIndex());
-prevBtn.onclick = () => playTrack(getPrevIndex());
-stopBtn.onclick = () => stopTrack();
-
-shuffleBtn.onclick = () => {
-  isShuffle = !isShuffle;
-  shuffleBtn.classList.toggle('active', isShuffle);
-  shuffleBtn.style.opacity = isShuffle ? '1' : '.55';
-};
-
-document.querySelectorAll('.new-controls button').forEach(btn => {
-  btn.onclick = () => {
-    const action = btn.dataset.action;
-    if(action === 'play'){
-      if(audio.paused) {
-        audio.play();
-        setPauseIcon();
-      } else {
-        audio.pause();
-        setPlayIcon();
-      }
-    }
-    if(action === 'next') nextBtn.onclick();
-    if(action === 'prev') prevBtn.onclick();
-    if(action === 'stop') stopTrack();
-    if(action === 'shuffle') shuffleBtn.onclick();
+// ======= ALBUM CLICK =======
+document.querySelectorAll('.album-card').forEach(c=>{
+  c.onclick=()=>{
+    document.querySelectorAll('.album-card').forEach(cc=>cc.classList.remove('active'));
+    c.classList.add('active');
+    renderTracks(c.dataset.album);
   };
 });
 
-document.querySelectorAll('.album-card').forEach(card => {
-  card.onclick = () => {
-    document.querySelectorAll('.album-card').forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
-    renderTracks(card.dataset.album);
-  };
-});
-
-const burger = document.querySelector('.burger');
-const menu = document.querySelector('.nav-menu');
-
-function toggleMenu(){
-  burger.classList.toggle('active');
-  menu.classList.toggle('active');
-}
-
-burger.onclick = toggleMenu;
-burger.addEventListener('keydown', (e) => {
-  if(e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    toggleMenu();
-  }
-});
-
-audio.addEventListener('play', setPauseIcon);
-audio.addEventListener('pause', () => {
-  if(audio.currentTime === 0) setPlayIcon();
-  else setPlayIcon();
-});
-
-document.addEventListener('visibilitychange', () => {
-  if(document.hidden) audio.pause();
-});
-
-const savedIndex = parseInt(localStorage.getItem('trackIndex') || '0', 10);
-const safeIndex = Number.isFinite(savedIndex) && savedIndex >= 0 && savedIndex < tracks.length ? savedIndex : 0;
-
-renderTracks('all');
-loadTrack(safeIndex);
-setPlayIcon();
-
-audio.volume = 1;
-
-document.getElementById('globalCover').alt = 'Обложка';
-document.getElementById('newCover').alt = 'Обложка нового трека';
+// ======= INITIAL =======
+renderTracks();
 </script>
 
 </body>
