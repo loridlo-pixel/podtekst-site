@@ -1,387 +1,242 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>PODТЕКСТ — Official</title>
-<style>
-:root{
-  --bg:#0f0f0f;
-  --bg2:#161616;
-  --text:#eaeaea;
-  --muted:#9a9a9a;
-  --accent:#ff5a5f;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{
-  font-family:Inter,system-ui,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-  padding-bottom:120px;
-}
+export default function ArtistLanding() {
+  const platforms = [
+    {
+      name: 'VK Музыка',
+      url: '#',
+      color: 'from-blue-500 to-blue-700',
+    },
+    {
+      name: 'Яндекс Музыка',
+      url: '#',
+      color: 'from-yellow-400 to-orange-500',
+    },
+    {
+      name: 'Звук',
+      url: '#',
+      color: 'from-purple-500 to-pink-500',
+    },
+    {
+      name: 'Spotify',
+      url: '#',
+      color: 'from-green-500 to-emerald-700',
+    },
+    {
+      name: 'Apple Music',
+      url: '#',
+      color: 'from-red-500 to-pink-600',
+    },
+  ];
 
-/* HEADER */
-header{
-  position:sticky;
-  top:0;
-  height:60px;
-  z-index:20;
-  background:rgba(15,15,15,.95);
-  backdrop-filter:blur(10px);
-}
-.nav{
-  max-width:600px;
-  margin:auto;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 12px;
-}
-.nav img{height:40px;}
-.burger{
-  display:flex;
-  flex-direction:column;
-  gap:3px;
-  width:24px;
-  cursor:pointer;
-}
-.burger span{
-  height:3px;
-  background:#fff;
-  border-radius:2px;
-  transition:.3s;
-}
-.burger.active span:nth-child(1){
-  transform:rotate(45deg) translate(5px,5px);
-}
-.burger.active span:nth-child(2){opacity:0;}
-.burger.active span:nth-child(3){
-  transform:rotate(-45deg) translate(5px,-5px);
-}
-.nav-menu-mobile{
-  display:none;
-  position:fixed;
-  top:60px;
-  right:0;
-  width:200px;
-  height:100vh;
-  background:#0f0f0f;
-  flex-direction:column;
-  gap:12px;
-  padding:20px;
-}
-.nav-menu-mobile.active{display:flex;}
+  return (
+    <div className="min-h-screen bg-black text-white overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-black to-zinc-950" />
 
-/* HERO */
-.hero{
-  width:100%;
-  height:40vh;
-  background:url("hero2.jpg") center/cover no-repeat;
-  position:relative;
-  overflow:hidden;
-}
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to right, rgba(0,0,0,.7), rgba(0,0,0,0));
-}
-.hero-content{
-  position:absolute;
-  left:12px;
-  top:50%;
-  transform:translateY(-50%);
-  color:#fff;
-}
-.hero-title{font-size:28px;margin-bottom:8px;}
-.hero-subtitle{font-size:14px;opacity:.85;}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-purple-700/20 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-700/20 blur-3xl rounded-full" />
 
-/* SECTIONS */
-section{max-width:600px;margin:auto;padding:12px;}
+      <main className="relative z-10">
+        <header className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/5">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-black tracking-tight">ARTISTNAME</h1>
+            </div>
 
-/* ABOUT */
-.about-text{color:#ddd;line-height:1.5;font-size:14px;}
+            <nav className="hidden md:flex items-center gap-8 text-sm text-zinc-300">
+              <a href="#about" className="hover:text-white transition">About</a>
+              <a href="#release" className="hover:text-white transition">Release</a>
+              <a href="#stream" className="hover:text-white transition">Streaming</a>
+              <a href="#contact" className="hover:text-white transition">Contact</a>
+            </nav>
 
-/* ALBUMS */
-.albums{
-  display:flex;
-  overflow-x:auto;
-  gap:12px;
-  padding:12px 0;
-  -webkit-overflow-scrolling:touch;
-}
-.album-card{
-  min-width:100px;
-  flex-shrink:0;
-  text-align:center;
-  opacity:.6;
-  cursor:pointer;
-}
-.album-card.active{opacity:1;}
-.album-card img{
-  width:100px;
-  height:100px;
-  border-radius:12px;
-  object-fit:cover;
-}
-.album-title{font-size:12px;margin-top:4px;color:#fff;}
+            <button className="px-5 py-2 rounded-xl bg-white text-black font-semibold hover:scale-105 transition-transform">
+              Listen Now
+            </button>
+          </div>
+        </header>
 
-/* TRACKS */
-.tracks{
-  background:var(--bg2);
-  border-radius:12px;
-  overflow:hidden;
-}
-.track{
-  padding:12px;
-  border-bottom:1px solid #222;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.track:last-child{border-bottom:none;}
-.track.active{background:#1b1b1b;}
-.track-title{flex:1;margin-left:8px;font-size:14px;}
-.track-play, .track-download{cursor:pointer;}
-.track-download{opacity:.5;}
-.track-download:hover{opacity:1;}
+        <section className="min-h-screen flex items-center px-6 lg:px-10 py-24">
+          <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/10 rounded-full px-4 py-2 text-sm backdrop-blur-md">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                New release out now
+              </div>
 
-/* GLOBAL PLAYER */
-.global-player{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:#1a1a1a;
-  border-top:1px solid #222;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 12px;
-  z-index:50;
-  transition:all .3s ease;
+              <div className="space-y-5">
+                <h2 className="text-6xl md:text-8xl font-black leading-none tracking-tight">
+                  FUTURE
+                  <span className="block text-zinc-500">VISION</span>
+                </h2>
+
+                <p className="text-lg text-zinc-300 leading-relaxed max-w-xl">
+                  Modern artist landing page with integrated streaming platforms,
+                  official music links and stylish presentation for releases,
+                  albums and artist branding.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <button className="px-8 py-4 rounded-2xl bg-white text-black font-bold hover:scale-105 transition-transform">
+                  Stream Release
+                </button>
+
+                <button className="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition backdrop-blur-xl">
+                  View More
+                </button>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-0 bg-purple-500/20 blur-3xl rounded-full" />
+
+              <div className="relative rounded-[32px] overflow-hidden border border-white/10 bg-zinc-900/50 backdrop-blur-xl shadow-2xl">
+                <img
+                  src="https://placehold.co/1000x1200/png"
+                  alt="Artist"
+                  className="w-full h-[650px] object-cover"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <div className="bg-black/40 border border-white/10 backdrop-blur-xl rounded-3xl p-6">
+                    <div className="flex items-center justify-between mb-5 gap-4">
+                      <div>
+                        <h3 className="text-2xl font-bold">NEW SINGLE</h3>
+                        <p className="text-zinc-400">Artist Name</p>
+                      </div>
+
+                      <button className="w-16 h-16 rounded-full bg-white text-black text-xl font-bold hover:scale-105 transition-transform">
+                        ▶
+                      </button>
+                    </div>
+
+                    <div className="h-2 rounded-full bg-zinc-700 overflow-hidden mb-3">
+                      <div className="h-full w-1/3 bg-white rounded-full" />
+                    </div>
+
+                    <div className="flex justify-between text-xs text-zinc-400 mb-6">
+                      <span>0:54</span>
+                      <span>2:38</span>
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                      {platforms.map((platform) => (
+                        <a
+                          key={platform.name}
+                          href={platform.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className={`bg-gradient-to-r ${platform.color} rounded-2xl px-4 py-3 text-center font-semibold hover:scale-105 transition-transform text-sm`}
+                        >
+                          {platform.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="px-6 lg:px-10 py-24 border-t border-white/5">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <img
+                src="https://placehold.co/900x700/png"
+                alt="About"
+                className="rounded-[32px] border border-white/10 shadow-2xl"
+              />
+            </div>
+
+            <div className="space-y-6">
+              <div className="text-sm uppercase tracking-[0.3em] text-zinc-500">
+                About Artist
+              </div>
+
+              <h3 className="text-5xl font-black leading-tight">
+                Music, visuals and atmosphere in one place.
+              </h3>
+
+              <p className="text-zinc-400 leading-relaxed text-lg">
+                This landing page combines artist branding, release promotion,
+                streaming integrations and modern UI design. Official links can
+                be connected to VK Music, Yandex Music, Zvuk, Spotify and Apple
+                Music.
+              </p>
+
+              <div className="grid grid-cols-2 gap-5 pt-4">
+                <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
+                  <div className="text-3xl font-black mb-2">2M+</div>
+                  <div className="text-zinc-500">Streams</div>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
+                  <div className="text-3xl font-black mb-2">120K</div>
+                  <div className="text-zinc-500">Monthly listeners</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="stream" className="px-6 lg:px-10 py-24 border-t border-white/5">
+          <div className="max-w-7xl mx-auto text-center mb-14">
+            <div className="text-sm uppercase tracking-[0.3em] text-zinc-500 mb-5">
+              Streaming Platforms
+            </div>
+
+            <h3 className="text-5xl font-black mb-5">
+              Listen on your favorite platform
+            </h3>
+
+            <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
+              Connect official embeds or direct links so all plays go into your artist statistics.
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {platforms.map((platform) => (
+              <a
+                key={platform.name}
+                href={platform.url}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-white/5 border border-white/10 rounded-[28px] p-8 hover:bg-white/10 transition group"
+              >
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${platform.color} mb-6`} />
+
+                <h4 className="text-2xl font-bold mb-3">{platform.name}</h4>
+
+                <p className="text-zinc-400 leading-relaxed mb-6">
+                  Official streaming integration with artist statistics support.
+                </p>
+
+                <div className="text-sm font-semibold text-white group-hover:translate-x-1 transition-transform">
+                  Open Platform →
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <footer id="contact" className="px-6 lg:px-10 py-16 border-t border-white/5">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <h4 className="text-2xl font-black">ARTISTNAME</h4>
+              <p className="text-zinc-500 mt-2">Official artist landing page</p>
+            </div>
+
+            <div className="flex gap-6 text-zinc-400 text-sm">
+              <a href="#">Instagram</a>
+              <a href="#">TikTok</a>
+              <a href="#">YouTube</a>
+              <a href="#">Telegram</a>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  );
 }
-.global-player.fullscreen{
-  top:0;
-  bottom:0;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:16px;
-}
-.global-cover{
-  width:48px;
-  height:48px;
-  border-radius:8px;
-  object-fit:cover;
-}
-.global-player.fullscreen .global-cover{
-  width:80%;
-  height:auto;
-  border-radius:12px;
-}
-.global-info{flex:1;overflow:hidden;text-align:center;}
-.global-title{
-  font-size:14px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.global-player.fullscreen .global-title{
-  font-size:20px;
-  margin-top:12px;
-}
-.global-controls{
-  display:flex;
-  gap:8px;
-}
-.global-controls button{
-  background:none;
-  border:none;
-  color:#fff;
-  font-size:20px;
-  cursor:pointer;
-}
-.global-progress{
-  position:absolute;
-  bottom:0;
-  left:0;
-  height:3px;
-  width:100%;
-  background:#333;
-}
-.global-bar{
-  height:100%;
-  width:0%;
-  background:var(--accent);
-  transition:width .1s linear;
-}
-
-/* SCROLLBAR HIDE */
-.albums::-webkit-scrollbar{display:none;}
-</style>
-</head>
-<body>
-
-<header>
-  <div class="nav">
-    <img src="logo.png" loading="lazy">
-    <div class="burger"><span></span><span></span><span></span></div>
-    <nav class="nav-menu-mobile"></nav>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">PODТЕКСТ</h1>
-    <p class="hero-subtitle">Чувствуй между строк</p>
-  </div>
-</section>
-
-<section id="about">
-  <h2>О группе</h2>
-  <div class="about-text">
-    <p>PODТЕКСТ — музыкальный проект с широким жанровым диапазоном и акцентом на смысл.</p>
-    <p>Проект работает на стыке лирической поп-музыки, рока, шансона, рэпа и других направлений, объединяя разные стили единым авторским подходом. В основе каждого трека — текст с глубиной, вторым планом и подтекстом.</p>
-    <p>Автор слов и музыки Дмитрий Кунгуров — разносторонний артист, свободно работающий с формой, настроением и жанром.</p>
-  </div>
-</section>
-
-<section id="tracks">
-  <h2>Альбомы</h2>
-  <div class="albums" id="albumList"></div>
-  <div class="tracks" id="tracksList"></div>
-</section>
-
-<div class="global-player" id="player">
-  <div class="global-progress"><div class="global-bar" id="globalBar"></div></div>
-  <img class="global-cover" id="globalCover" loading="lazy">
-  <div class="global-info">
-    <div class="global-title" id="globalTitle">—</div>
-  </div>
-  <div class="global-controls">
-    <button id="prev">⏮</button>
-    <button id="play">▶️</button>
-    <button id="stop">⏹</button>
-    <button id="next">⏭</button>
-    <button id="shuffle">🔀</button>
-    <button id="fullscreen">⤢</button>
-  </div>
-</div>
-
-<script>
-// ======= TRACKS DATA =======
-const albums = [
-  {slug:"album1", title:"Две сестры", cover:"cover/album-main.jpg"},
-  {slug:"album2", title:"Город северных вьюг", cover:"cover/album-main2.jpg"},
-  {slug:"album3", title:"Авангард идёт вперёд", cover:"cover/album-main3.jpg"}
-];
-const tracks = [
-  {title:"Белая акация", album:"album1", cover:"cover/album-main.jpg", file:"music/belaya-akaciya.mp3"},
-  {title:"За всё судьбу благодарю", album:"album1", cover:"cover/album-main.jpg", file:"music/za-vsyo-sudbu-blagodaryu.mp3"},
-  {title:"Посмотри на небо", album:"album1", cover:"cover/album-main.jpg", file:"music/posmotri-na-nebo.mp3"},
-  {title:"Город северных вьюг", album:"album2", cover:"cover/album-main2.jpg", file:"music/gorod-severnyh-vyug.mp3"},
-  {title:"Сколько лет ожидания", album:"album2", cover:"cover/album-main2.jpg", file:"music/skolko-let-ozhidaniya.mp3"},
-  {title:"Бокал игристого вина", album:"album3", cover:"cover/album-main3.jpg", file:"music/bokal-igristogo-vina.mp3"}
-];
-
-// ======= RENDER ALBUMS =======
-const albumList = document.getElementById('albumList');
-albums.forEach(a=>{
-  const div = document.createElement('div');
-  div.className='album-card';
-  div.dataset.album=a.slug;
-  div.innerHTML=`<img src="${a.cover}" loading="lazy"><div class="album-title">${a.title}</div>`;
-  albumList.appendChild(div);
-});
-
-// ======= AUDIO PLAYER =======
-let currentIndex = 0;
-let shuffled = false;
-const audio = new Audio();
-const globalCover = document.getElementById('globalCover');
-const globalTitle = document.getElementById('globalTitle');
-const globalBar = document.getElementById('globalBar');
-const player = document.getElementById('player');
-
-function loadTrack(i){
-  const t = tracks[i];
-  currentIndex=i;
-  audio.src=t.file;
-  globalCover.src=t.cover;
-  globalTitle.textContent=t.title;
-  highlightTrack(i);
-}
-function playTrack(i){
-  loadTrack(i);
-  audio.play();
-  playBtn.textContent="⏸";
-}
-function stopTrack(){audio.pause(); audio.currentTime=0; playBtn.textContent="▶️";}
-function nextTrack(){
-  if(shuffled) currentIndex=Math.floor(Math.random()*tracks.length);
-  else currentIndex=(currentIndex+1)%tracks.length;
-  playTrack(currentIndex);
-}
-function prevTrack(){
-  if(shuffled) currentIndex=Math.floor(Math.random()*tracks.length);
-  else currentIndex=(currentIndex-1+tracks.length)%tracks.length;
-  playTrack(currentIndex);
-}
-function toggleShuffle(){shuffled=!shuffled; shuffleBtn.style.color=shuffled?"var(--accent)":"#fff";}
-function toggleFullscreen(){player.classList.toggle('fullscreen');}
-
-// ======= TRACKS RENDER =======
-function renderTracks(album){
-  const list = document.getElementById('tracksList');
-  list.innerHTML='';
-  tracks.forEach((t,i)=>{
-    if(album && t.album!==album) return;
-    const div=document.createElement('div');
-    div.className='track';
-    div.innerHTML=`<div class="track-title">${t.title}</div><div class="track-play">▶️</div>`;
-    div.querySelector('.track-play').onclick=()=>playTrack(i);
-    list.appendChild(div);
-  });
-}
-function highlightTrack(i){
-  document.querySelectorAll('.track').forEach((el,j)=>{
-    el.classList.toggle('active',i===j);
-  });
-}
-
-// ======= CONTROLS =======
-const playBtn=document.getElementById('play');
-const stopBtn=document.getElementById('stop');
-const nextBtn=document.getElementById('next');
-const prevBtn=document.getElementById('prev');
-const shuffleBtn=document.getElementById('shuffle');
-const fullscreenBtn=document.getElementById('fullscreen');
-
-playBtn.onclick=()=>{audio.paused?audio.play():audio.pause(); playBtn.textContent=audio.paused?"▶️":"⏸";}
-stopBtn.onclick=stopTrack;
-nextBtn.onclick=nextTrack;
-prevBtn.onclick=prevTrack;
-shuffleBtn.onclick=toggleShuffle;
-fullscreenBtn.onclick=toggleFullscreen;
-
-audio.ontimeupdate=()=>{globalBar.style.width=(audio.currentTime/audio.duration*100||0)+'%';};
-audio.onended=nextTrack;
-
-// ======= ALBUM CLICK =======
-document.querySelectorAll('.album-card').forEach(c=>{
-  c.onclick=()=>{
-    document.querySelectorAll('.album-card').forEach(cc=>cc.classList.remove('active'));
-    c.classList.add('active');
-    renderTracks(c.dataset.album);
-  };
-});
-
-// ======= INITIAL =======
-renderTracks();
-</script>
-
-</body>
-</html>
