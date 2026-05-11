@@ -33,17 +33,13 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
 
     <!-- LOGO -->
-    <div class="flex items-center gap-3">
+    <div class="flex items-center">
 
       <img
         src="./logo.png"
-        class="w-10 h-10 rounded-full border border-white/20 object-cover"
+        class="w-16 sm:w-20 h-auto object-contain"
         alt="Logo"
       />
-
-      <span class="font-black text-sm sm:text-base tracking-wide">
-        PODТЕКСТ
-      </span>
 
     </div>
 
@@ -113,7 +109,7 @@
         href="#releases"
         class="inline-block mt-8 sm:mt-10 bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-sm sm:text-base hover:scale-105 transition"
       >
-        Просмотр альбома
+        Дискография
       </a>
 
     </div>
@@ -165,22 +161,20 @@
         </p>
 
         <!-- STREAM LINKS -->
-        <div class="flex flex-col gap-3">
+        <div class="grid grid-cols-2 gap-3">
 
           <!-- VK -->
           <a
             target="_blank"
             href="https://vk.com/artist/6335870159044524236"
-            class="bg-blue-600 hover:bg-blue-500 rounded-xl px-4 py-3 font-bold flex items-center gap-3 text-sm sm:text-base transition"
+            class="bg-blue-600 hover:bg-blue-500 rounded-xl px-4 py-4 flex items-center justify-center transition"
           >
 
             <img
-              src="./vk.svg"
-              class="w-5 h-5 object-contain"
-              alt="VK"
+              src="./vkmusic.svg"
+              class="h-8 w-auto object-contain"
+              alt="VK Music"
             />
-
-            VK Музыка
 
           </a>
 
@@ -188,16 +182,14 @@
           <a
             target="_blank"
             href="https://music.yandex.ru/artist/25920059"
-            class="bg-yellow-500 hover:bg-yellow-400 text-black rounded-xl px-4 py-3 font-bold flex items-center gap-3 text-sm sm:text-base transition"
+            class="bg-white hover:bg-zinc-200 rounded-xl px-4 py-4 flex items-center justify-center transition"
           >
 
             <img
-              src="./yandex.svg"
-              class="w-5 h-5 object-contain"
-              alt="Yandex"
+              src="./yandexmusic.svg"
+              class="h-8 w-auto object-contain"
+              alt="Yandex Music"
             />
-
-            Яндекс Музыка
 
           </a>
 
@@ -205,33 +197,29 @@
           <a
             target="_blank"
             href="https://zvuk.com/artist/214261402"
-            class="bg-purple-600 hover:bg-purple-500 rounded-xl px-4 py-3 font-bold flex items-center gap-3 text-sm sm:text-base transition"
+            class="bg-purple-600 hover:bg-purple-500 rounded-xl px-4 py-4 flex items-center justify-center transition"
           >
 
             <img
-              src="./zvuk.svg"
-              class="w-5 h-5 object-contain"
+              src="./zvukmusic.svg"
+              class="h-8 w-auto object-contain"
               alt="Zvuk"
             />
 
-            Сбер Звук
-
           </a>
 
-          <!-- MTS -->
+          <!-- KION -->
           <a
             target="_blank"
             href="https://music.mts.ru/artist/25920059"
-            class="bg-red-600 hover:bg-red-500 rounded-xl px-4 py-3 font-bold flex items-center gap-3 text-sm sm:text-base transition"
+            class="bg-red-600 hover:bg-red-500 rounded-xl px-4 py-4 flex items-center justify-center transition"
           >
 
             <img
-              src="./mts.svg"
-              class="w-5 h-5 object-contain"
-              alt="MTS"
+              src="./kionmusic.svg"
+              class="h-8 w-auto object-contain"
+              alt="KION Music"
             />
-
-            MTS Music
 
           </a>
 
@@ -298,73 +286,65 @@
       Музыкальные платформы
     </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
 
       <!-- VK -->
       <a
-        class="bg-blue-600 hover:bg-blue-500 rounded-2xl p-5 sm:p-6 font-bold flex items-center justify-center gap-3 transition"
+        class="bg-blue-600 hover:bg-blue-500 rounded-2xl p-6 flex items-center justify-center transition"
         target="_blank"
         href="https://vk.com/artist/6335870159044524236"
       >
 
         <img
-          src="./vk.svg"
-          class="w-6 h-6 object-contain"
+          src="./vkmusic.svg"
+          class="h-8 w-auto object-contain"
           alt="VK"
         />
-
-        VK Музыка
 
       </a>
 
       <!-- YANDEX -->
       <a
-        class="bg-yellow-500 hover:bg-yellow-400 text-black rounded-2xl p-5 sm:p-6 font-bold flex items-center justify-center gap-3 transition"
+        class="bg-white hover:bg-zinc-200 rounded-2xl p-6 flex items-center justify-center transition"
         target="_blank"
         href="https://music.yandex.ru/artist/25920059"
       >
 
         <img
-          src="./yandex.svg"
-          class="w-6 h-6 object-contain"
+          src="./yandexmusic.svg"
+          class="h-8 w-auto object-contain"
           alt="Yandex"
         />
-
-        Яндекс Музыка
 
       </a>
 
       <!-- ZVUK -->
       <a
-        class="bg-purple-600 hover:bg-purple-500 rounded-2xl p-5 sm:p-6 font-bold flex items-center justify-center gap-3 transition"
+        class="bg-purple-600 hover:bg-purple-500 rounded-2xl p-6 flex items-center justify-center transition"
         target="_blank"
         href="https://zvuk.com/artist/214261402"
       >
 
         <img
-          src="./zvuk.svg"
-          class="w-6 h-6 object-contain"
+          src="./zvukmusic.svg"
+          class="h-8 w-auto object-contain"
           alt="Zvuk"
         />
 
-        Сбер Звук
-
       </a>
 
-      <!-- MTS -->
+      <!-- KION -->
       <a
-        class="bg-red-600 hover:bg-red-500 rounded-2xl p-5 sm:p-6 font-bold flex items-center justify-center gap-3 transition"
+        class="bg-red-600 hover:bg-red-500 rounded-2xl p-6 flex items-center justify-center transition"
         target="_blank"
         href="https://music.mts.ru/artist/25920059"
       >
 
         <img
-          src="./mts.svg"
-          class="w-6 h-6 object-contain"
-          alt="MTS"
+          src="./kionmusic.svg"
+          class="h-8 w-auto object-contain"
+          alt="KION"
         />
-
-        MTS Music
 
       </a>
 
